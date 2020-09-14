@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>hexo 个人博客seo优化（一） | Life-long Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="HEXO,HEXO SEO优化">
+  
+  
+  
+  
+  <meta name="description" content="书不记，熟读可记；义不精，细思可精；惟有志不立，直是无著力处。——朱熹  前言我最近在搭建hexo 个人博客，优点是独立属于自己的，但是缺点也很明显，在主流的搜索引擎几乎无法搜索关于自己的帖子，所以需要自己SEO优化，下面是我的相关操作，希望能够给大家带来帮助。  本地文章优化添加sitemapsitemap 顾名思义，Sitemap 可方便网站管理员通知搜索引擎他们网站上有哪些可供抓取的网页">
+<meta name="keywords" content="HEXO,HEXO SEO优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo 个人博客SEO优化（一）">
+<meta property="og:url" content="http://lansus.coding.me/SEO优化.html">
+<meta property="og:site_name" content="Life-long Learning">
+<meta property="og:description" content="书不记，熟读可记；义不精，细思可精；惟有志不立，直是无著力处。——朱熹  前言我最近在搭建hexo 个人博客，优点是独立属于自己的，但是缺点也很明显，在主流的搜索引擎几乎无法搜索关于自己的帖子，所以需要自己SEO优化，下面是我的相关操作，希望能够给大家带来帮助。  本地文章优化添加sitemapsitemap 顾名思义，Sitemap 可方便网站管理员通知搜索引擎他们网站上有哪些可供抓取的网页">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-09-14T07:35:37.793Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo 个人博客SEO优化（一）">
+<meta name="twitter:description" content="书不记，熟读可记；义不精，细思可精；惟有志不立，直是无著力处。——朱熹  前言我最近在搭建hexo 个人博客，优点是独立属于自己的，但是缺点也很明显，在主流的搜索引擎几乎无法搜索关于自己的帖子，所以需要自己SEO优化，下面是我的相关操作，希望能够给大家带来帮助。  本地文章优化添加sitemapsitemap 顾名思义，Sitemap 可方便网站管理员通知搜索引擎他们网站上有哪些可供抓取的网页">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.png">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+</head></html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about/">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="hexo-SEO优化" style="width: 75%; float:left;" class="article article-type-hexo" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      hexo 个人博客SEO优化（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/SEO优化.html" class="article-date">
+	  <time datetime="2019-04-28T05:33:12.000Z" itemprop="datePublished">2019-04-28</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Technology/">Technology</a><a class="article-category-link" href="/categories/Technology/html/">html</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><script type="text/javascript" src="/js/baidu.js"></script></p>
+<blockquote>
+<p>书不记，熟读可记；义不精，细思可精；惟有志不立，直是无著力处。——朱熹</p>
+</blockquote>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我最近在搭建<a href="http://lansus.coding.me/">hexo</a> 个人博客，优点是独立属于自己的，但是缺点也很明显，<br>在主流的搜索引擎几乎无法搜索关于自己的帖子，所以需要自己SEO优化，下面是我的相关操作，希望能够给大家带来帮助。</p>
+<hr>
+<h1 id="本地文章优化"><a href="#本地文章优化" class="headerlink" title="本地文章优化"></a>本地文章优化</h1><h2 id="添加sitemap"><a href="#添加sitemap" class="headerlink" title="添加sitemap"></a>添加sitemap</h2><p>sitemap 顾名思义，Sitemap 可方便网站管理员通知搜索引擎他们网站上有哪些可供抓取的网页。最简单的 Sitemap形式，就是XML文件，在其中列出网站中的网址以及关于每个网址的其他元数据（上次更新的时间、更改的频率以及相对于网站上其他网址的重要程度为何等），以便搜索引擎可以更加智能地抓取网站。</p>
+<h3 id="1-安装插件"><a href="#1-安装插件" class="headerlink" title="1.安装插件"></a>1.安装插件</h3><p>我们需要下载两个站点插件</p>
+<p><script type="text/javascript" src="/js/src/baidu.js"></script><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm install hexo-generator-sitemap --save  # sitemap.xml</span><br><span class="line">npm install hexo-generator-baidu-sitemap  --save # baidu-sitemap.xml</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-添加配置文件"><a href="#2-添加配置文件" class="headerlink" title="2.添加配置文件"></a>2.添加配置文件</h3><p>安装完成以后，需要在站点配置文件的_config.xml（注：不是主题配置文件）中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 自动生成sitemap</span><br><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br><span class="line">baidusitemap:</span><br><span class="line">  path: baidusitemap.xml</span><br></pre></td></tr></table></figure>
+<p>这样，每次hexo general 都会自动生成配置文件sitemap.xml（google引擎）和 baidu-sitemap.xml（百度引擎）。</p>
+
+<h3 id="3-优化归档结构"><a href="#3-优化归档结构" class="headerlink" title="3.优化归档结构"></a>3.优化归档结构</h3><p>seo搜索引擎优化中，网站的最佳结构是用户从首页点击三次就可以到达任何一个页面，但是我们使用hexo编译的站点打开文章的url是：sitename/year/mounth/day/title四层的结构，这样的url结构很不利于seo，爬虫就会经常爬不到我们的文章，于是，我们可以将url直接改成sitename/title的形式，并且title最好是用英文，在根目录的配置文件下修改permalink如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url: http://你的网站</span><br><span class="line">root: /</span><br><span class="line">permalink: :title.html</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
+<p>重新hexo general后，随便打开一篇日志，url的绝对地址结构就改成 <a href="http://yoursite/title.xml" target="_blank" rel="noopener">http://yoursite/title.xml</a> 了</p>
+<h3 id="robots配置"><a href="#robots配置" class="headerlink" title="robots配置"></a>robots配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /home/</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /about/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /js/</span><br><span class="line">Disallow: /css/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: http://lansus.coding.me/sitemap.xml</span><br><span class="line">Sitemap: http://lansus.coding.me/baidusitemap.xml</span><br></pre></td></tr></table></figure>
+<p>Allow表示允许被访问的，Disallow是不允许的意思。注意后面两个Sitemap就是网站地图了。而网站地图前面说了是给爬虫用的。这里配置在robots中。把上面的代码保存为robots.txt放入theme/yourtheme/source 。在编译后这个文件会出现在blog/public中。后面会使用到</p>
+<h2 id="关键词和描述的优化"><a href="#关键词和描述的优化" class="headerlink" title="关键词和描述的优化"></a>关键词和描述的优化</h2><p>下面实对关键词的优化，因为搜索姻亲对关键词也会抓取。<br>next主题模板文件大部分是swig文件，但是新的大部分主题的layout模板文件是ejs写的，我们在确定主题模板文件是否有对keyword的生成，只要查找theme/yourtheme/layout/_partials\head.文件后缀即可。查找里面是否有<code>theme.keywords</code>的字段，下面给出next主题的head.swig和hiker主题的head.ejs代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># next theme   head.swig</span><br><span class="line">&#123;% if page.keywords %&#125;</span><br><span class="line">  &lt;meta name=&quot;keywords&quot; content=&quot;&#123;&#123; page.keywords &#125;&#125;&quot; /&gt;</span><br><span class="line">&#123;% elif page.tags and page.tags.length %&#125;</span><br><span class="line">  &lt;meta name=&quot;keywords&quot; content=&quot;&#123;% for tag in page.tags %&#125;&#123;&#123; tag.name &#125;&#125;,&#123;% endfor %&#125;&quot; /&gt;</span><br><span class="line">&#123;% elif theme.keywords %&#125;</span><br><span class="line">  &lt;meta name=&quot;keywords&quot; content=&quot;&#123;&#123; theme.keywords &#125;&#125;&quot; /&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line"># hiker theme</span><br><span class="line"></span><br><span class="line"> &lt;% if (page.keywords)&#123; %&gt;</span><br><span class="line">    &lt;meta name=&quot;keywords&quot; content=&quot;&lt;%- page.keywords %&gt;&quot; /&gt;</span><br><span class="line">  &lt;% &#125; else if (theme.keywords)&#123; %&gt;</span><br><span class="line">    &lt;meta name=&quot;keywords&quot; content=&quot;&lt;%- theme.keywords %&gt;&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上面的代码并不需要只是用来判断keyword是否有生成，下面是需要我们添加的，在 \scaffolds\post.md中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keywords: </span><br><span class="line">description:</span><br></pre></td></tr></table></figure></p>
+<p>然后就可以在新写的文件里添加keyword,格式是[1,2,3]</p>
+<p>#开启压缩文件</p>
+<p> 因为hexo生成的文件是静态html，里面占用了大量的空白符。使用gulp进行压缩接口提高访问速度并且降低内存。<br> 进行下列操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp@3.9.1  (gulp 4.0.0以上压缩会对现有hexo文件报错)</span><br><span class="line">npm install gulp-minify-css gulp-uglify gulp-htmlmin gulp-htmlclean gulp --save</span><br><span class="line">npm install gulp-concat</span><br><span class="line">npm install gulp-imagemin</span><br></pre></td></tr></table></figure></p>
+<p>在hexo blog文件夹下创建gulpfile.js:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require(&apos;gulp&apos;),</span><br><span class="line">    uglify = require(&apos;gulp-uglify&apos;),</span><br><span class="line">    cssmin = require(&apos;gulp-minify-css&apos;),</span><br><span class="line">    imagemin = require(&apos;gulp-imagemin&apos;),</span><br><span class="line">    htmlmin = require(&apos;gulp-htmlmin&apos;),</span><br><span class="line">    htmlclean = require(&apos;gulp-htmlclean&apos;);</span><br><span class="line">    concat = require(&apos;gulp-concat&apos;);</span><br><span class="line">//JS压缩</span><br><span class="line">gulp.task(&apos;uglify&apos;, function() &#123;</span><br><span class="line">    return gulp.src([&apos;./public/js/**/.js&apos;,&apos;!./public/js/**/*min.js&apos;])//只是排除min.js文件还是不严谨，一般不会有问题，根据自己博客的修改我的修改为return gulp.src([&apos;./public/**/*.js&apos;,&apos;!./public/zuoxi/**/*.js&apos;,,&apos;!./public/radio/**/*.js&apos;])</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(&apos;./public/js&apos;));//对应修改为./public即可</span><br><span class="line">&#125;);</span><br><span class="line">//public-fancybox-js压缩</span><br><span class="line">gulp.task(&apos;fancybox:js&apos;, function() &#123;</span><br><span class="line">    return gulp.src(&apos;./public/vendors/fancybox/source/jquery.fancybox.js&apos;)</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(&apos;./public/vendors/fancybox/source/&apos;));</span><br><span class="line">&#125;);</span><br><span class="line">// 合并 JS</span><br><span class="line">gulp.task(&apos;jsall&apos;, function () &#123;</span><br><span class="line">    return gulp.src(&apos;./public/**/*.js&apos;)</span><br><span class="line">    // 压缩后重命名</span><br><span class="line">        .pipe(concat(&apos;app.js&apos;))</span><br><span class="line">        .pipe(gulp.dest(&apos;./public&apos;));</span><br><span class="line">&#125;);</span><br><span class="line">//public-fancybox-css压缩</span><br><span class="line">gulp.task(&apos;fancybox:css&apos;, function() &#123;</span><br><span class="line">    return gulp.src(&apos;./public/vendors/fancybox/source/jquery.fancybox.css&apos;)</span><br><span class="line">        .pipe(cssmin())</span><br><span class="line">        .pipe(gulp.dest(&apos;./public/vendors/fancybox/source/&apos;));</span><br><span class="line">&#125;);</span><br><span class="line">//CSS压缩</span><br><span class="line">gulp.task(&apos;cssmin&apos;, function() &#123;</span><br><span class="line">    return gulp.src([&apos;./public/css/main.css&apos;,&apos;!./public/css/*min.css&apos;])   </span><br><span class="line">        .pipe(cssmin())</span><br><span class="line">        .pipe(gulp.dest(&apos;./public/css/&apos;));</span><br><span class="line">&#125;);</span><br><span class="line">//图片压缩</span><br><span class="line">gulp.task(&apos;images&apos;, function() &#123;</span><br><span class="line">    gulp.src(&apos;./public/uploads/*.*&apos;)</span><br><span class="line">        .pipe(imagemin(&#123;</span><br><span class="line">            progressive: false</span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(&apos;./public/uploads/&apos;));</span><br><span class="line">&#125;);</span><br><span class="line">// 压缩 public 目录 html文件 public/**/*.hmtl 表示public下所有文件夹中html，包括当前目录</span><br><span class="line">    gulp.task(&apos;minify-html&apos;, function() &#123;</span><br><span class="line">      return gulp.src(&apos;./public/**/*.html&apos;)</span><br><span class="line">        .pipe(htmlclean())</span><br><span class="line">        .pipe(htmlmin(&#123;</span><br><span class="line">             removeComments: true,</span><br><span class="line">             minifyJS: true,</span><br><span class="line">             minifyCSS: true,</span><br><span class="line">             minifyURLs: true,</span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(&apos;./public&apos;))</span><br><span class="line">    &#125;);</span><br><span class="line">gulp.task(&apos;build&apos;, [&apos;uglify&apos;, &apos;cssmin&apos;, &apos;fancybox:js&apos;, &apos;fancybox:css&apos;, &apos;jsall&apos;,&apos;images&apos;]);</span><br><span class="line"></span><br><span class="line">//, &apos;minify-html&apos;</span><br></pre></td></tr></table></figure></p>
+<p>在根目录下的package.json文件中生成写入scripts:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;:&quot;hexo clean &amp;&amp; hexo g &amp;&amp; gulp build&quot;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>全文件为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;hexo-site&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;0.0.0&quot;,</span><br><span class="line">  &quot;private&quot;: true,</span><br><span class="line">  &quot;hexo&quot;: &#123;</span><br><span class="line">    &quot;version&quot;: &quot;3.8.0&quot;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;gulp&quot;: &quot;^3.9.1&quot;,</span><br><span class="line">    &quot;gulp-concat&quot;: &quot;^2.6.1&quot;,</span><br><span class="line">    &quot;gulp-htmlclean&quot;: &quot;^2.7.22&quot;,</span><br><span class="line">    &quot;gulp-htmlmin&quot;: &quot;^5.0.1&quot;,</span><br><span class="line">    &quot;gulp-minify-css&quot;: &quot;^1.2.4&quot;,</span><br><span class="line">    &quot;gulp-uglify&quot;: &quot;^3.0.2&quot;,</span><br><span class="line">    &quot;hexo&quot;: &quot;^3.8.0&quot;,</span><br><span class="line">    &quot;hexo-deployer-git&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-generator-archive&quot;: &quot;^0.1.5&quot;,</span><br><span class="line">    &quot;hexo-generator-baidu-sitemap&quot;: &quot;^0.1.6&quot;,</span><br><span class="line">    &quot;hexo-generator-category&quot;: &quot;^0.1.3&quot;,</span><br><span class="line">    &quot;hexo-generator-feed&quot;: &quot;^1.2.2&quot;,</span><br><span class="line">    &quot;hexo-generator-index&quot;: &quot;^0.2.1&quot;,</span><br><span class="line">    &quot;hexo-generator-json-content&quot;: &quot;^4.1.3&quot;,</span><br><span class="line">    &quot;hexo-generator-searchdb&quot;: &quot;^1.0.8&quot;,</span><br><span class="line">    &quot;hexo-generator-sitemap&quot;: &quot;^1.2.0&quot;,</span><br><span class="line">    &quot;hexo-generator-tag&quot;: &quot;^0.2.0&quot;,</span><br><span class="line">    &quot;hexo-renderer-ejs&quot;: &quot;^0.3.1&quot;,</span><br><span class="line">    &quot;hexo-renderer-marked&quot;: &quot;^0.3.2&quot;,</span><br><span class="line">    &quot;hexo-renderer-stylus&quot;: &quot;^0.3.3&quot;,</span><br><span class="line">    &quot;hexo-server&quot;: &quot;^0.3.3&quot;</span><br><span class="line">	</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;:&quot;hexo clean &amp;&amp; hexo g &amp;&amp; gulp build&quot;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样可以用<code>npm run build</code> 一次性搞定 三个操作了,每次打包带时候会生成压缩文件。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wtchat_pay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>LANSUS
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/SEO优化.html" target="_blank" title="hexo 个人博客SEO优化（一）">http://lansus.coding.me/SEO优化.html</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80Mzk3My8yMDUwOQ==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SEO优化/">SEO优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/seo优化（二）.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          SEO博客优化（二）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/我的世界.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">我的世界</div>
+    </a>
+  
+</nav>
+
+  
+  </article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本地文章优化"><span class="nav-number">2.</span> <span class="nav-text">本地文章优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加sitemap"><span class="nav-number">2.1.</span> <span class="nav-text">添加sitemap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装插件"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.安装插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-添加配置文件"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.添加配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-优化归档结构"><span class="nav-number">2.1.3.</span> <span class="nav-text">3.优化归档结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#robots配置"><span class="nav-number">2.1.4.</span> <span class="nav-text">robots配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键词和描述的优化"><span class="nav-number">2.2.</span> <span class="nav-text">关键词和描述的优化</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+ 
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+		 <p id="copyRightEn">Copyright &copy; 2016 - 2020 Life-long Learning All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+		
+
+		
+  </div>
+
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about/" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1277362972&web_id=1277362972" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Life-long Learning
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 LANSUS All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

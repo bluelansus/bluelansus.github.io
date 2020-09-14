@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>深度学习之路（四）matplotlib使用 | Life-long Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="技术,人工智能,lansus">
+  
+  
+  
+  
+  <meta name="description" content="matplotlib 介绍matplotlob,是python里辅助制作图表的代码库，属于做机器学习的基础几个库之一。Matplotlib是一个Python 2D绘图库，可以生成各种硬拷贝格式和跨平台的交互式环境的出版物质量数据。Matplotlib可用于Python脚本，Python和IPython shell，Jupyter笔记本，Web应用程序服务器和四个图形用户界面工具包。 Matplot">
+<meta name="keywords" content="人工智能,Python,Matplotlib">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习之路（四）matplotlib使用">
+<meta property="og:url" content="http://lansus.coding.me/深度学习之路4_matplotlib使用.html">
+<meta property="og:site_name" content="Life-long Learning">
+<meta property="og:description" content="matplotlib 介绍matplotlob,是python里辅助制作图表的代码库，属于做机器学习的基础几个库之一。Matplotlib是一个Python 2D绘图库，可以生成各种硬拷贝格式和跨平台的交互式环境的出版物质量数据。Matplotlib可用于Python脚本，Python和IPython shell，Jupyter笔记本，Web应用程序服务器和四个图形用户界面工具包。 Matplot">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://lansus.coding.me/image/anatomy.webp">
+<meta property="og:image" content="http://lansus.coding.me/image/matplotlib_demo1.png">
+<meta property="og:image" content="http://lansus.coding.me/image/matplotlib_demo2.png">
+<meta property="og:image" content="http://lansus.coding.me/image/matplotlib_demo3.png">
+<meta property="og:image" content="http://lansus.coding.me/image/matplotlib_demo4.png">
+<meta property="og:image" content="http://lansus.coding.me/image/matplotlib_demo5.png">
+<meta property="og:image" content="http://lansus.coding.me/image/matplotlib_demo6.png">
+<meta property="og:updated_time" content="2020-09-14T07:35:37.796Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习之路（四）matplotlib使用">
+<meta name="twitter:description" content="matplotlib 介绍matplotlob,是python里辅助制作图表的代码库，属于做机器学习的基础几个库之一。Matplotlib是一个Python 2D绘图库，可以生成各种硬拷贝格式和跨平台的交互式环境的出版物质量数据。Matplotlib可用于Python脚本，Python和IPython shell，Jupyter笔记本，Web应用程序服务器和四个图形用户界面工具包。 Matplot">
+<meta name="twitter:image" content="http://lansus.coding.me/image/anatomy.webp">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.png">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+</head></html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about/">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-深度学习之路4_matplotlib使用" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      深度学习之路（四）matplotlib使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/深度学习之路4_matplotlib使用.html" class="article-date">
+	  <time datetime="2019-05-24T10:37:50.000Z" itemprop="datePublished">2019-05-24</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/TechnologyS/">TechnologyS</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="matplotlib-介绍"><a href="#matplotlib-介绍" class="headerlink" title="matplotlib 介绍"></a>matplotlib 介绍</h1><p>matplotlob,是python里辅助制作图表的代码库，属于做机器学习的基础几个库之一。<br>Matplotlib是一个Python 2D绘图库，可以生成各种硬拷贝格式和跨平台的交互式环境的出版物质量数据。Matplotlib可用于Python脚本，Python和IPython shell，Jupyter笔记本，Web应用程序服务器和四个图形用户界面工具包。</p>
+<p>Matplotlib试图让简单的事情变得简单而艰难。您只需几行代码即可生成绘图，直方图，功率谱，条形图，错误图，散点图等。有关示例，请参阅 示例图和缩略图库。</p>
+<p>对于简单的绘图，pyplot模块提供了类似MATLAB的接口，特别是与IPython结合使用时。对于高级用户，您可以通过面向对象的界面或MATLAB用户熟悉的一组函数完全控制线型，字体属性，轴属性等</p>
+<h1 id="Matpotlib的基本使用"><a href="#Matpotlib的基本使用" class="headerlink" title="Matpotlib的基本使用"></a>Matpotlib的基本使用</h1><p>这是一张使用plot患处的2D的属性分布示意图，用来说明图表的常用属性以及显示的位置</p>
+<p><img src="http://lansus.coding.me/image/anatomy.webp" alt="parts of a Figure"></p>
+<h2 id="初级图形绘制"><a href="#初级图形绘制" class="headerlink" title="初级图形绘制"></a>初级图形绘制</h2><p>我们可以根据数据简单的绘制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">from IPython.display  import *</span><br><span class="line">%matplotlib inline</span><br><span class="line">x=np.arange(1.11)</span><br><span class="line">y=2*x+5</span><br><span class="line">plt.title(&quot;Matylotlib demo&quot;)</span><br><span class="line">plt.xlabel(&quot;x&quot;)</span><br><span class="line">plt.ylabel(&quot;y&quot;)</span><br><span class="line">plt.plot(x,y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="http://lansus.coding.me/image/matplotlib_demo1.png" alt="运行结果"></p>
+<p>它默认是不显示中文的，如果我们要先显示中文，我们可以先下载<a href="https://www.fontpalace.com/font-download/SimHei/" target="_blank" rel="noopener">SimHei.ttf</a><br>字体，然后进行操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zhfont1=matplotlib.font_manager.FontProperties(fname=&quot;SimHei.ttf&quot;)</span><br><span class="line">plt.xlabel(&quot;x轴&quot;,fontproperties=zhfont1)</span><br></pre></td></tr></table></figure></p>
+<p>或者直接可以用本机上的字体，确认找到本机上适合中文字体，然后操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.rcParams[&apos;font.family&apos;]=[&apos;STFangsong&apos;]</span><br></pre></td></tr></table></figure></p>
+<h2 id="自定义格式以及颜色缩写"><a href="#自定义格式以及颜色缩写" class="headerlink" title="自定义格式以及颜色缩写"></a>自定义格式以及颜色缩写</h2><p>如果我们要显示虚线图，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x=np.arange(1.11)</span><br><span class="line">y=2*x+5</span><br><span class="line">plt.title(&quot;Matylotlib demo&quot;)</span><br><span class="line">plt.xlabel(&quot;x&quot;)</span><br><span class="line">plt.ylabel(&quot;y&quot;)</span><br><span class="line">plt.plot(x,y,&quot;--r&quot;)  #显示虚线红色</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p>作为线性图的替代，可以通过向 plot() 函数添加格式字符串来显示离散值。 可以使用以下格式化字符</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">实线样式（默认样式）</td>
+</tr>
+<tr>
+<td style="text-align:center">–</td>
+<td style="text-align:center">短横线</td>
+</tr>
+<tr>
+<td style="text-align:center">-.</td>
+<td style="text-align:center">点划线</td>
+</tr>
+<tr>
+<td style="text-align:center">:</td>
+<td style="text-align:center">虚线</td>
+</tr>
+<tr>
+<td style="text-align:center">.</td>
+<td style="text-align:center">点标记</td>
+</tr>
+<tr>
+<td style="text-align:center">,</td>
+<td style="text-align:center">像素标记</td>
+</tr>
+<tr>
+<td style="text-align:center">o</td>
+<td style="text-align:center">圆标记</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">星形标记</td>
+</tr>
+</tbody>
+</table>
+<p>以下是matplotlib用到的颜色的缩写</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">‘b’</td>
+<td style="text-align:center">蓝色</td>
+</tr>
+<tr>
+<td style="text-align:center">‘g’</td>
+<td style="text-align:center">绿色</td>
+</tr>
+<tr>
+<td style="text-align:center">‘r’</td>
+<td style="text-align:center">红色</td>
+</tr>
+<tr>
+<td style="text-align:center">‘c’</td>
+<td style="text-align:center">青色</td>
+</tr>
+<tr>
+<td style="text-align:center">‘m’</td>
+<td style="text-align:center">品红色</td>
+</tr>
+<tr>
+<td style="text-align:center">‘y’</td>
+<td style="text-align:center">黄色</td>
+</tr>
+<tr>
+<td style="text-align:center">‘k’</td>
+<td style="text-align:center">黑色</td>
+</tr>
+<tr>
+<td style="text-align:center">‘w’</td>
+<td style="text-align:center">白色</td>
+</tr>
+</tbody>
+</table>
+<h2 id="绘制多个内容"><a href="#绘制多个内容" class="headerlink" title="绘制多个内容"></a>绘制多个内容</h2><p>subplot()能够在同个图中绘制多个内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np </span><br><span class="line">import matplotlib.pyplot as plt </span><br><span class="line"># 计算正弦和余弦曲线上的点的 x 和 y 坐标 </span><br><span class="line">x = np.arange(0,  3  * np.pi,  0.1) </span><br><span class="line">y_sin = np.sin(x) </span><br><span class="line">y_cos = np.cos(x)  </span><br><span class="line"># 建立 subplot 网格，高为 2，宽为 1  </span><br><span class="line"># 激活第一个 subplot</span><br><span class="line">plt.subplot(2,  1,  1)  </span><br><span class="line"># 绘制第一个图像 </span><br><span class="line">plt.plot(x, y_sin) </span><br><span class="line">plt.title(&apos;Sine&apos;)  </span><br><span class="line"># 将第二个 subplot 激活，并绘制第二个图像</span><br><span class="line">plt.subplot(2,  1,  2) </span><br><span class="line">plt.plot(x, y_cos) </span><br><span class="line">plt.title(&apos;Cosine&apos;)  </span><br><span class="line"># 展示图像</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://lansus.coding.me/image/matplotlib_demo2.png" alt="绘制图形"></p>
+<h1 id="几种常见图表的操作"><a href="#几种常见图表的操作" class="headerlink" title="几种常见图表的操作"></a>几种常见图表的操作</h1><h2 id="Histogram-柱状图"><a href="#Histogram-柱状图" class="headerlink" title="Histogram(柱状图)"></a>Histogram(柱状图)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.hist(x, bins= 10, range= None, normed= False, weights= None, cumulative= False, bottom= None, histtype= &apos;bar&apos;, align= &apos;mid&apos;, orientation= &apos;vertical&apos;, rwidth= None, log= False, color= None, label= None, stacked= False)</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性名</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">指定绘制直方图的数据</td>
+</tr>
+<tr>
+<td style="text-align:center">bins</td>
+<td style="text-align:center">条形条数</td>
+</tr>
+<tr>
+<td style="text-align:center">rangge</td>
+<td style="text-align:center">x轴数据范围</td>
+</tr>
+<tr>
+<td style="text-align:center">normed</td>
+<td style="text-align:center">是否将直方图频数换成频率</td>
+</tr>
+<tr>
+<td style="text-align:center">weights</td>
+<td style="text-align:center">参数可为每一个数据点设置权重</td>
+</tr>
+<tr>
+<td style="text-align:center">cumulative</td>
+<td style="text-align:center">是否需要计算累计频数或频率</td>
+</tr>
+<tr>
+<td style="text-align:center">bottom</td>
+<td style="text-align:center">添加基准线，默认是0</td>
+</tr>
+<tr>
+<td style="text-align:center">orientation</td>
+<td style="text-align:center">设置垂直水平方式</td>
+</tr>
+<tr>
+<td style="text-align:center">rwidth</td>
+<td style="text-align:center">条形宽度百分比</td>
+</tr>
+<tr>
+<td style="text-align:center">color</td>
+<td style="text-align:center">填充色</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">data=pd.DataFrame([90,70,45,58,68,72],index=[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;,&quot;f&quot;])</span><br><span class="line">plt.hist(data[0],facecolor=&apos;r&apos;,histtype=&quot;bar&quot;)</span><br><span class="line">plt.rcParams[&apos;font.family&apos;]=[&apos;SimHei.ttf&apos;]</span><br><span class="line">plt.xlabel(&quot;学生&quot;)</span><br><span class="line">plt.ylabel(&quot;成绩&quot;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="http://lansus.coding.me/image/matplotlib_demo3.png" alt="绘制图形"></p>
+<h2 id="Scatter-Plot（散点图）"><a href="#Scatter-Plot（散点图）" class="headerlink" title="Scatter Plot（散点图）"></a>Scatter Plot（散点图）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(</span><br><span class="line">    x,</span><br><span class="line">    y,</span><br><span class="line">    s=None,</span><br><span class="line">    c=None,</span><br><span class="line">    marker=None,</span><br><span class="line">    cmap=None,</span><br><span class="line">    norm=None,</span><br><span class="line">    vmin=None,</span><br><span class="line">    vmax=None,</span><br><span class="line">    alpha=None,</span><br><span class="line">    linewidths=None,</span><br><span class="line">    verts=None,</span><br><span class="line">    edgecolors=None,</span><br><span class="line">    *,</span><br><span class="line">    data=None,</span><br><span class="line">    **kwargs,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>下面是主要属性</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性名</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">散点图dx轴数据</td>
+</tr>
+<tr>
+<td style="text-align:center">y</td>
+<td style="text-align:center">散点图y轴数据</td>
+</tr>
+<tr>
+<td style="text-align:center">s</td>
+<td style="text-align:center">区域面积的大小</td>
+</tr>
+<tr>
+<td style="text-align:center">colors</td>
+<td style="text-align:center">散点图填充颜色</td>
+</tr>
+<tr>
+<td style="text-align:center">marker</td>
+<td style="text-align:center">显示标记，自定义散点的形状，例如marker=’,’散点会变成正方形，具体看参照[这里]<a href="https://matplotlib.org/api/markers_api.html?highlight=matplotlib%20markers#module-matplotlib.markers" target="_blank" rel="noopener">https://matplotlib.org/api/markers_api.html?highlight=matplotlib%20markers#module-matplotlib.markers</a>)</td>
+</tr>
+<tr>
+<td style="text-align:center">cmap</td>
+<td style="text-align:center">颜色地图</td>
+</tr>
+<tr>
+<td style="text-align:center">norm</td>
+<td style="text-align:center">是否转换成频率，只有当c是floa类型才可以使用</td>
+</tr>
+<tr>
+<td style="text-align:center">vmax,vmin</td>
+<td style="text-align:center">与norm配套使用，调整数据亮度</td>
+</tr>
+<tr>
+<td style="text-align:center">alpha</td>
+<td style="text-align:center">透明度</td>
+</tr>
+<tr>
+<td style="text-align:center">linewidths</td>
+<td style="text-align:center">调整散点边缘线宽度</td>
+</tr>
+<tr>
+<td style="text-align:center">edgecolors</td>
+<td style="text-align:center">边缘颜色设置</td>
+</tr>
+</tbody>
+</table>
+<p>使用代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">size=50</span><br><span class="line">x=np.random.rand(size)</span><br><span class="line">y=np.random.rand(size)</span><br><span class="line">area=np.pi*(135*x**2)</span><br><span class="line">colors=np.random.rand(size)</span><br><span class="line">plt.scatter(x,y,s=area,c=colors,alpha=0.5,marker=&quot;o&quot;,linewidths=2)</span><br></pre></td></tr></table></figure>
+<p><img src="http://lansus.coding.me/image/matplotlib_demo4.png" alt="绘制图形"></p>
+<h2 id="Pie-Chart-饼状图"><a href="#Pie-Chart-饼状图" class="headerlink" title="Pie Chart(饼状图)"></a>Pie Chart(饼状图)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">plt.pie(</span><br><span class="line">    x,</span><br><span class="line">    explode=None,</span><br><span class="line">    labels=None,</span><br><span class="line">    colors=None,</span><br><span class="line">    autopct=None,</span><br><span class="line">    pctdistance=0.6,</span><br><span class="line">    shadow=False,</span><br><span class="line">    labeldistance=1.1,</span><br><span class="line">    startangle=None,</span><br><span class="line">    radius=None,</span><br><span class="line">    counterclock=True,</span><br><span class="line">    wedgeprops=None,</span><br><span class="line">    textprops=None,</span><br><span class="line">    center=(0, 0),</span><br><span class="line">    frame=False,</span><br><span class="line">    rotatelabels=False,</span><br><span class="line">    *,</span><br><span class="line">    data=None,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">x=[25,25,50]</span><br><span class="line">explode=(0.01,0.01,0.01)</span><br><span class="line">labels=[&apos;xioaming&apos;,&apos;xiaocheng&apos;,&apos;xiaoxiao&apos;]</span><br><span class="line">plt.pie(x,labels=labels,explode=explode,autopct=&quot;%.1f%%&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://lansus.coding.me/image/matplotlib_demo5.png" alt="绘制图形"></p>
+<h2 id="3D-Plot（3D图）"><a href="#3D-Plot（3D图）" class="headerlink" title="3D Plot（3D图）"></a>3D Plot（3D图）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib as cm</span><br><span class="line">from mpl_toolkits.mplot3d import Axes3D</span><br><span class="line">X=np.arange(-5,5,0.25)</span><br><span class="line">Y=np.arange(-5,5,0.25)</span><br><span class="line">X,Y=np.meshgrid(X,Y)</span><br><span class="line">R=np.sqrt(X**2+Y**2)</span><br><span class="line">Z=np.sin(R)</span><br><span class="line">fig=plt.figure()</span><br><span class="line">ax=Axes3D(fig)</span><br><span class="line">ax.plot_surface(X,Y,Z,rstride=1,cstride=1)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="http://lansus.coding.me/image/matplotlib_demo6.png" alt="绘制图形"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wtchat_pay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>LANSUS
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/深度学习之路4_matplotlib使用.html" target="_blank" title="深度学习之路（四）matplotlib使用">http://lansus.coding.me/深度学习之路4_matplotlib使用.html</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80Mzk3My8yMDUwOQ==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Matplotlib/">Matplotlib</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人工智能/">人工智能</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/感悟摘抄一.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          感悟摘抄一
+        
+      </div>
+    </a>
+  
+  
+    <a href="/numpy的使用小结.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">深度学习之路2：numpy的使用小结</div>
+    </a>
+  
+</nav>
+
+  
+  </article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#matplotlib-介绍"><span class="nav-number">1.</span> <span class="nav-text">matplotlib 介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Matpotlib的基本使用"><span class="nav-number">2.</span> <span class="nav-text">Matpotlib的基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初级图形绘制"><span class="nav-number">2.1.</span> <span class="nav-text">初级图形绘制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义格式以及颜色缩写"><span class="nav-number">2.2.</span> <span class="nav-text">自定义格式以及颜色缩写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制多个内容"><span class="nav-number">2.3.</span> <span class="nav-text">绘制多个内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#几种常见图表的操作"><span class="nav-number">3.</span> <span class="nav-text">几种常见图表的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Histogram-柱状图"><span class="nav-number">3.1.</span> <span class="nav-text">Histogram(柱状图)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scatter-Plot（散点图）"><span class="nav-number">3.2.</span> <span class="nav-text">Scatter Plot（散点图）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pie-Chart-饼状图"><span class="nav-number">3.3.</span> <span class="nav-text">Pie Chart(饼状图)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D-Plot（3D图）"><span class="nav-number">3.4.</span> <span class="nav-text">3D Plot（3D图）</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+ 
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+		 <p id="copyRightEn">Copyright &copy; 2016 - 2020 Life-long Learning All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+		
+
+		
+  </div>
+
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about/" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1277362972&web_id=1277362972" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Life-long Learning
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 LANSUS All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

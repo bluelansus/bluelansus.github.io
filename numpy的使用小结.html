@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>深度学习之路2：numpy的使用小结 | Life-long Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="numpy,python，机器学习,">
+  
+  
+  
+  
+  <meta name="description" content="Numpy简介 Numpy 顾名思义，我们可以拆解成number python来解读，就是python里用来处理数字的一个库，下面我们可以引述，numpy官方网站的一段话来介绍 :   NumPy is the fundamental package for scientific computing in Python.It is a Python library that provides a">
+<meta name="keywords" content="numpy,python，机器学习,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习之路2：numpy的使用小结">
+<meta property="og:url" content="http://lansus.coding.me/numpy的使用小结.html">
+<meta property="og:site_name" content="Life-long Learning">
+<meta property="og:description" content="Numpy简介 Numpy 顾名思义，我们可以拆解成number python来解读，就是python里用来处理数字的一个库，下面我们可以引述，numpy官方网站的一段话来介绍 :   NumPy is the fundamental package for scientific computing in Python.It is a Python library that provides a">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://lansus.coding.me/image/output_25_0.png">
+<meta property="og:updated_time" content="2020-09-14T07:35:37.794Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习之路2：numpy的使用小结">
+<meta name="twitter:description" content="Numpy简介 Numpy 顾名思义，我们可以拆解成number python来解读，就是python里用来处理数字的一个库，下面我们可以引述，numpy官方网站的一段话来介绍 :   NumPy is the fundamental package for scientific computing in Python.It is a Python library that provides a">
+<meta name="twitter:image" content="http://lansus.coding.me/image/output_25_0.png">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.png">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+</head></html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about/">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-numpy的使用小结" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      深度学习之路2：numpy的使用小结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/numpy的使用小结.html" class="article-date">
+	  <time datetime="2019-05-23T02:48:49.000Z" itemprop="datePublished">2019-05-23</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Numpy简介"><a href="#Numpy简介" class="headerlink" title="Numpy简介"></a>Numpy简介</h1><p> Numpy 顾名思义，我们可以拆解成number python来解读，就是python里用来处理数字的一个库，下面我们可以引述，<a href="https://www.numpy.org/devdocs/user/quickstart.html" target="_blank" rel="noopener">numpy官方网站</a>的一段话来介绍 :</p>
+<blockquote>
+<p> NumPy is the fundamental package for scientific computing in Python.<br>It is a Python library that provides a multidimensional array object,<br>various derived objects (such as masked arrays and matrices), and an<br>assortment of routines for fast operations on arrays, including<br>mathematical, logical, shape manipulation, sorting, selecting, I/O,<br>discrete Fourier transforms, basic linear algebra, basic statistical<br>operations, random simulation and much more.</p>
+<p>At the core of the NumPy package, is the ndarray object. This<br>encapsulates n-dimensional arrays of homogeneous data types, with many<br>operations being performed in compiled code for performance. There are<br>several important differences between NumPy arrays and the standard<br>Python sequences:</p>
+<ul>
+<li>NumPy arrays have a fixed size at creation, unlike Python lists (which can grow dynamically). Changing the size of an ndarray will<br>create a new array and delete the original.</li>
+<li>The elements in a NumPy array are all required to be of the same data type, and thus will be the same size in memory. The exception:<br>one can have arrays of (Python, including NumPy) objects, thereby<br>allowing for arrays of different sized elements. NumPy arrays<br>facilitate advanced mathematical and other types of operations on<br>large numbers of data. Typically, such operations are executed more<br>efficiently and with less code than is possible using Python’s<br>built-in sequences.</li>
+<li>A growing plethora of scientific and mathematical Python-based packages are using NumPy arrays; though these typically support<br>Python-sequence input, they convert such input to NumPy arrays prior<br>to processing, and they often output NumPy arrays. In other words, in<br>order to efficiently use much (perhaps even most) of today’s<br>scientific/mathematical Python-based software, just knowing how to use<br>Python’s built-in sequence types is insufficient - one also needs to<br>know how to use NumPy arrays.</li>
+</ul>
+</blockquote>
+<p>从上面可以看出，Numpy库主要包括多维序列的创建、计算（强调了这里的array数列不是python里的数列类型，比它强大很多）,数列的初始化包含了大量科学计算的数列所需要的初始化，例如正太随机分布多维数列初始化、多维矩阵等。另外numpy也包括数列的处理分析，比用原生态python语句高出几倍效率。</p>
+<h1 id="numpy入手"><a href="#numpy入手" class="headerlink" title="numpy入手"></a>numpy入手</h1><h2 id="Numpy-的下载以及调用"><a href="#Numpy-的下载以及调用" class="headerlink" title="Numpy 的下载以及调用"></a>Numpy 的下载以及调用</h2><p>Numpy 库一般只有在安装Anaconda 数据包才会自带，如果只是安装了python的朋友可以在控制台输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade  numpy</span><br></pre></td></tr></table></figure></p>
+<p>安装完成后，只要在py文件中  <code>import numpy</code> 便可以了</p>
+<h2 id="Numpy-的属性及方法"><a href="#Numpy-的属性及方法" class="headerlink" title="Numpy 的属性及方法"></a>Numpy 的属性及方法</h2><p>这里介绍一个小操作，在Jupyter notebook 中写代码的时候只要在调用方法后输入？执行后就会跳出具体的方法帮助文档，但是包对象的帮助文档调出需要在对象前。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?numpy  # 查看numpy</span><br><span class="line">numpy.random?  # 查看random方法的使用说明</span><br></pre></td></tr></table></figure>
+<p>下面列表是对Numpy的部分属性方法汇总:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法名</th>
+<th style="text-align:center">使用说明</th>
+<th style="text-align:center">举例</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">array(python.list/tuples)</td>
+<td style="text-align:center">数据的创建</td>
+<td style="text-align:center">t=[2,3] <br> numpy.array(t)</td>
+<td style="text-align:center">创建方式有多种</td>
+</tr>
+<tr>
+<td style="text-align:center">arange([min,max,interval])</td>
+<td style="text-align:center">通过范围创建数列</td>
+<td style="text-align:center">a=numpy.arange(4,7,2)</td>
+<td style="text-align:center">interval是间隔<br> 范围内不包括max,包括min</td>
+</tr>
+<tr>
+<td style="text-align:center">ndim</td>
+<td style="text-align:center">所在数列的维度，返回int</td>
+<td style="text-align:center">a.ndim &amp; numpy.ndim(a)</td>
+<td style="text-align:center">多用于矩阵或多维</td>
+</tr>
+<tr>
+<td style="text-align:center">shape</td>
+<td style="text-align:center">多维数列的形状，例如矩阵会返回矩阵行列</td>
+<td style="text-align:center">numpy.shape(a) &amp; a.shape</td>
+<td style="text-align:center">复杂维度的形状</td>
+</tr>
+<tr>
+<td style="text-align:center">add()</td>
+<td style="text-align:center">数列相加numpy.add(a,b) 等同a+b</td>
+<td style="text-align:center">numpy.add(a,b)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">zeros([colum,rows…])</td>
+<td style="text-align:center">生成一个0对角矩阵</td>
+<td style="text-align:center">numpy.zeros([3,5])</td>
+</tr>
+<tr>
+<td style="text-align:center">ones([colum,rows…])</td>
+<td style="text-align:center">生成1对角矩阵</td>
+<td style="text-align:center">numpy.ones([2,2])</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">dot()</td>
+<td style="text-align:center">矩阵乘法，不同于a* b</td>
+<td style="text-align:center">numpy.dot(a,b）</td>
+<td style="text-align:center"><a href="https://www.cnblogs.com/alantu2018/p/8528299.html" target="_blank" rel="noopener">矩阵乘法理解</a></td>
+</tr>
+<tr>
+<td style="text-align:center">dtype</td>
+<td style="text-align:center">数列数据类型</td>
+<td style="text-align:center">numpy.aray(t,dtype=”int32”</td>
+<td style="text-align:center">定义数据类型</td>
+</tr>
+<tr>
+<td style="text-align:center">itemsize</td>
+<td style="text-align:center">字符所占内存大小</td>
+<td style="text-align:center">t.itemsize</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">fromfuntion(fun(),dtype)</td>
+<td style="text-align:center">根据函数创建数列</td>
+<td style="text-align:center">numpy.fromfuntion(getx(2,3),dtyp=”int64”)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">round(array,place)</td>
+<td style="text-align:center">同python四舍五入</td>
+<td style="text-align:center">numpy.round(t,3)</td>
+<td style="text-align:center">place是保留小数第几位</td>
+</tr>
+<tr>
+<td style="text-align:center">allclose(array1,array2)</td>
+<td style="text-align:center">比较两个数列是否相同</td>
+<td style="text-align:center">见下面   矩阵求同</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">swapaxes()</td>
+<td style="text-align:center">轴转置</td>
+<td style="text-align:center">a.swapaxes(2,3)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">bincont()</td>
+<td style="text-align:center">数列所在位置的相等数值个数</td>
+<td style="text-align:center">np.bincount(np.array([1,2,3,4,5,6,4,5,6,4]))</td>
+<td style="text-align:center">见附录代码，输出列数是array最大值</td>
+</tr>
+<tr>
+<td style="text-align:center">meshgrid()</td>
+<td style="text-align:center">获取数列的空间坐标</td>
+<td style="text-align:center">x,y=np.meshgrid(np.arange(3,6,1),np.arange(3,6,1))</td>
+<td style="text-align:center">见附录代码</td>
+</tr>
+<tr>
+<td style="text-align:center">where(condition,a,b)</td>
+<td style="text-align:center">根据条件condition来抉择a的数值或者b的</td>
+<td style="text-align:center">np.where([True,False],a,b)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">sum ()</td>
+<td style="text-align:center">求和</td>
+<td style="text-align:center">np.sum(a)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">mean()</td>
+<td style="text-align:center">求平均值</td>
+<td style="text-align:center">c.mean()</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">std()</td>
+<td style="text-align:center">方差</td>
+<td style="text-align:center">c.std()</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">in1d(a,b)</td>
+<td style="text-align:center">a中的元素是否在b内</td>
+<td style="text-align:center">np.in1d(a,b)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">unique(array)</td>
+<td style="text-align:center">提取出所有不重复的元素</td>
+<td style="text-align:center">np.unique([1,1,234,2,2])</td>
+</tr>
+</tbody>
+</table>
+<h1 id="矩阵的操作"><a href="#矩阵的操作" class="headerlink" title="矩阵的操作"></a>矩阵的操作</h1><h2 id="矩阵转置"><a href="#矩阵转置" class="headerlink" title="矩阵转置"></a>矩阵转置</h2><p>  <code>a.T</code> 或者通过方法<code>transpose()</code>来转置：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  &gt;&gt;&gt; x = np.arange(4).reshape((2,2))</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">array([[0, 1],</span><br><span class="line">       [2, 3]])</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&gt;&gt;&gt; np.transpose(x)</span><br><span class="line">array([[0, 2],</span><br><span class="line">       [1, 3]])</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&gt;&gt;&gt; x = np.ones((1, 2, 3))</span><br><span class="line">&gt;&gt;&gt; np.transpose(x, (1, 0, 2)).shape</span><br><span class="line">(2, 1, 3)</span><br></pre></td></tr></table></figure></p>
+<h2 id="求逆矩阵"><a href="#求逆矩阵" class="headerlink" title="求逆矩阵"></a>求逆矩阵</h2><p>linalg 这个包是所有线性代数操作方法的集合包</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.linalg.inv(np.dot(a.T,a))</span><br></pre></td></tr></table></figure>
+<h2 id="求同"><a href="#求同" class="headerlink" title="求同"></a>求同</h2><p>我们如果需要检测逆矩阵是否正确，就可以通过逆矩阵和矩阵乘积是否和1对角矩阵相同就行了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a_t=np.linalg.inv(a)</span><br><span class="line">print(np.dot(a,a_t))</span><br><span class="line">np.allclose(np.dot(a,a_t),np.eye(2))</span><br></pre></td></tr></table></figure></p>
+<h1 id="Numpy数据的保存和读取"><a href="#Numpy数据的保存和读取" class="headerlink" title="Numpy数据的保存和读取"></a>Numpy数据的保存和读取</h1><p>  下面说的时常用文件存储的方式。<br>  单个数据存储 </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> # 数据存储单组</span><br><span class="line">np.save(&quot;a.npy&quot;,a)</span><br><span class="line">print(np.load(&quot;a.npy&quot;))</span><br><span class="line">#存储多组</span><br><span class="line">np.savez(&quot;b.npz&quot;,x=a,y=d)</span><br><span class="line">np.load(&quot;b.npz&quot;)[&apos;y&apos;]</span><br><span class="line">#存储成txt文件</span><br><span class="line">np.savetxt(&quot;x.txt&quot;,a)</span><br></pre></td></tr></table></figure>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p>是上面所说知识点的用法例子</p>
+<p>We can create  numpy arrays from native python tuples or lists.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">tp=([<span class="number">1</span>,<span class="number">2</span>],[<span class="number">34</span>,<span class="number">4</span>])</span><br><span class="line">a=np.array(tp,dtype=<span class="string">"int32"</span>)</span><br><span class="line">print(a.shape)</span><br></pre></td></tr></table></figure>
+<pre><code>(2, 2)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(np.arange(<span class="number">5</span>,<span class="number">18</span>,<span class="number">1</span>))   <span class="comment">#范围内特定等间距递增</span></span><br></pre></td></tr></table></figure>
+<pre><code>[ 5  6  7  8  9 10 11 12 13 14 15 16 17]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(np.linspace(<span class="number">0</span>,<span class="number">10</span>,<span class="number">11</span>)) <span class="comment"># 范围内间距平分</span></span><br></pre></td></tr></table></figure>
+<pre><code>[ 0.  1.  2.  3.  4.  5.  6.  7.  8.  9. 10.]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c=np.arange(<span class="number">30</span>).reshape(<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>)</span><br><span class="line">c</span><br></pre></td></tr></table></figure>
+<pre><code>array([[[ 0,  1],
+        [ 2,  3],
+        [ 4,  5],
+        [ 6,  7],
+        [ 8,  9]],
+
+       [[10, 11],
+        [12, 13],
+        [14, 15],
+        [16, 17],
+        [18, 19]],
+
+       [[20, 21],
+        [22, 23],
+        [24, 25],
+        [26, 27],
+        [28, 29]]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.sum(axis=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 1,  5,  9, 13, 17],
+       [21, 25, 29, 33, 37],
+       [41, 45, 49, 53, 57]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d=[<span class="number">1</span>,<span class="number">4</span>],[<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">d=np.array(d)</span><br><span class="line">a.dot(d)vvv</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  9,  14],
+       [ 50, 156]])
+</code></pre><p>One dimissions arrays</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.arange(<span class="number">3</span>,<span class="number">25</span>).shape</span><br></pre></td></tr></table></figure>
+<pre><code>(22,)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.shape(a)</span><br></pre></td></tr></table></figure>
+<pre><code>(2, 2)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.zeros([<span class="number">3</span>,<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0.]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.dot(a,b)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  9,  14],
+       [ 50, 156]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">a*b</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  1,   8],
+       [136,  20]])
+</code></pre><p>需要注意的地方，从原数列下标取值，会污染原来数列,而python的数列是没有污染这种概念</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> num=[<span class="number">1</span>,<span class="number">3</span>,<span class="number">45</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line">n=np.array(num)</span><br><span class="line">a_slice=n[<span class="number">2</span>:<span class="number">4</span>]</span><br><span class="line">a_slice[<span class="number">0</span>]=<span class="number">1000000</span></span><br><span class="line">print(a_slice)</span><br><span class="line">print(n)</span><br></pre></td></tr></table></figure>
+<pre><code>[1000000       6]
+[      1       3 1000000       6       7       8]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n.itemsize</span><br></pre></td></tr></table></figure>
+<pre><code>4
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x,y)</span>:</span>                        <span class="comment"># 通过函数来创建array</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">4</span>*x+y</span><br><span class="line">nd=np.fromfunction(f,(<span class="number">3</span>,<span class="number">4</span>),dtype=<span class="string">"int"</span>)</span><br><span class="line">nd</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0,  1,  2,  3],
+       [ 4,  5,  6,  7],
+       [ 8,  9, 10, 11]])
+</code></pre><p>根据条件选取的例子，员工五天上班的时间，找出周四的上班时间</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name=[<span class="string">'wangjun'</span>,<span class="string">'xiaoming'</span>,<span class="string">'john'</span>,<span class="string">'tom'</span>,<span class="string">'qingqing'</span>]</span><br><span class="line">names=np.array(name)</span><br><span class="line">worktime=np.round(np.random.randn(<span class="number">5</span>,<span class="number">5</span>)+<span class="number">8.0</span>,<span class="number">2</span>)</span><br><span class="line">worktime</span><br></pre></td></tr></table></figure>
+<pre><code>array([[8.95, 7.16, 7.48, 8.49, 8.27],
+       [8.26, 9.41, 6.98, 8.78, 8.62],
+       [9.05, 8.41, 9.86, 8.74, 9.02],
+       [7.86, 6.18, 7.34, 7.55, 7.12],
+       [9.7 , 7.54, 6.47, 7.71, 9.21]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(worktime[names==<span class="string">'john'</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>[[9.05 8.41 9.86 8.74 9.02]]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">worktime.transpose(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+&lt;ipython-input-100-1d384739e9f7&gt; in &lt;module&gt;
+----&gt; 1 worktime.transpose(2)
+
+
+ValueError: axes don&apos;t match array
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">a_t=np.linalg.inv(a)</span><br><span class="line">print(np.dot(a,a_t))</span><br><span class="line">np.allclose(np.dot(a,a_t),np.eye(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>[[1. 0.]
+ [0. 1.]]
+
+
+
+
+
+True
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#bincount()</span></span><br><span class="line">np.bincount(np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">200</span>,<span class="number">1000</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>]))</span><br></pre></td></tr></table></figure>
+<pre><code>array([0, 1, 1, ..., 0, 0, 1], dtype=int64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pointx,pointy=np.meshgrid(np.arange(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">0.02</span>),np.arange(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">0.020</span>))</span><br><span class="line">pointx</span><br></pre></td></tr></table></figure>
+<pre><code>array([[-10.  ,  -9.98,  -9.96, ...,   9.94,   9.96,   9.98],
+       [-10.  ,  -9.98,  -9.96, ...,   9.94,   9.96,   9.98],
+       [-10.  ,  -9.98,  -9.96, ...,   9.94,   9.96,   9.98],
+       ...,
+       [-10.  ,  -9.98,  -9.96, ...,   9.94,   9.96,   9.98],
+       [-10.  ,  -9.98,  -9.96, ...,   9.94,   9.96,   9.98],
+       [-10.  ,  -9.98,  -9.96, ...,   9.94,   9.96,   9.98]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pointy</span><br></pre></td></tr></table></figure>
+<pre><code>array([[-10.  , -10.  , -10.  , ..., -10.  , -10.  , -10.  ],
+       [ -9.98,  -9.98,  -9.98, ...,  -9.98,  -9.98,  -9.98],
+       [ -9.96,  -9.96,  -9.96, ...,  -9.96,  -9.96,  -9.96],
+       ...,
+       [  9.94,   9.94,   9.94, ...,   9.94,   9.94,   9.94],
+       [  9.96,   9.96,   9.96, ...,   9.96,   9.96,   9.96],
+       [  9.98,   9.98,   9.98, ...,   9.98,   9.98,   9.98]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#meshgrid</span></span><br><span class="line">z=pointx**<span class="number">2</span>+pointy**<span class="number">2</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span>  mp</span><br><span class="line">mp.imshow(z)</span><br><span class="line">mp.colorbar()</span><br><span class="line">mp.show()</span><br></pre></td></tr></table></figure>
+<p><img src="http://lansus.coding.me/image/output_25_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># where</span></span><br><span class="line">print(a)</span><br><span class="line">print(d)</span><br><span class="line">np.where([<span class="literal">False</span>,<span class="literal">True</span>],a,d)</span><br></pre></td></tr></table></figure>
+<pre><code>[[ 1  2]
+ [34  4]]
+[[1 4]
+ [4 5]]
+
+
+
+
+
+array([[1, 2],
+       [4, 4]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#inld</span></span><br><span class="line">np.in1d([<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],a)</span><br></pre></td></tr></table></figure>
+<pre><code>array([ True, False,  True])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.unique([<span class="number">1</span>,<span class="number">1</span>,<span class="number">234</span>,<span class="number">2</span>,<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>array([  1,   2, 234])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据存储单组</span></span><br><span class="line">np.save(<span class="string">"a.npy"</span>,a)</span><br><span class="line">print(np.load(<span class="string">"a.npy"</span>))</span><br><span class="line"><span class="comment">#存储多组</span></span><br><span class="line">np.savez(<span class="string">"b.npz"</span>,x=a,y=d)</span><br><span class="line">np.load(<span class="string">"b.npz"</span>)[<span class="string">'y'</span>]</span><br><span class="line"><span class="comment">#存储成txt文件</span></span><br><span class="line">np.savetxt(<span class="string">"x.txt"</span>,a)</span><br></pre></td></tr></table></figure>
+<pre><code>[[ 1  2]
+ [34  4]]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>#参考资料</p>
+<ol>
+<li><a href="https://www.numpy.org/devdocs/user/quickstart.html" target="_blank" rel="noopener">https://www.numpy.org/devdocs/user/quickstart.html</a>   </li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wtchat_pay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>LANSUS
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/numpy的使用小结.html" target="_blank" title="深度学习之路2：numpy的使用小结">http://lansus.coding.me/numpy的使用小结.html</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80Mzk3My8yMDUwOQ==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/numpy/">numpy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/深度学习之路4_matplotlib使用.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          深度学习之路（四）matplotlib使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/python环境和Jupter notebook使用.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">深度学习之路1：python环境和Jupter notebook使用</div>
+    </a>
+  
+</nav>
+
+  
+  </article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Numpy简介"><span class="nav-number">1.</span> <span class="nav-text">Numpy简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy入手"><span class="nav-number">2.</span> <span class="nav-text">numpy入手</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Numpy-的下载以及调用"><span class="nav-number">2.1.</span> <span class="nav-text">Numpy 的下载以及调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Numpy-的属性及方法"><span class="nav-number">2.2.</span> <span class="nav-text">Numpy 的属性及方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩阵的操作"><span class="nav-number">3.</span> <span class="nav-text">矩阵的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵转置"><span class="nav-number">3.1.</span> <span class="nav-text">矩阵转置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求逆矩阵"><span class="nav-number">3.2.</span> <span class="nav-text">求逆矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求同"><span class="nav-number">3.3.</span> <span class="nav-text">求同</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Numpy数据的保存和读取"><span class="nav-number">4.</span> <span class="nav-text">Numpy数据的保存和读取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-number">5.</span> <span class="nav-text">附录</span></a></li></ol>
+    
+    </div>
+  </aside>
+ 
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+		 <p id="copyRightEn">Copyright &copy; 2016 - 2020 Life-long Learning All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+		
+
+		
+  </div>
+
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about/" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1277362972&web_id=1277362972" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Life-long Learning
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 LANSUS All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

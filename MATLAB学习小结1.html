@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>matlab学习小结1 | Life-long Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MATLAB">
+  
+  
+  
+  
+  <meta name="description" content="在看机器学习的课程的时候发现，课程作业都是需要用MATLAB语言来完成的，所以决定来系统学习以下MATLAB，安排时间在10h左右。 MATLAB语言简介MATLAB是美国MathWorks公司出品的商业数学软件，用于算法开发、数据可视化、数据分析以及数值计算的高级技术计算语言和交互式环境，主要包括MATLAB和Simulink两大部分。它将数值分析、矩阵计算、科学数据可视化以及非线性动态系统的建">
+<meta name="keywords" content="MATLAB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MATLAB学习小结1">
+<meta property="og:url" content="http://lansus.coding.me/MATLAB学习小结1.html">
+<meta property="og:site_name" content="Life-long Learning">
+<meta property="og:description" content="在看机器学习的课程的时候发现，课程作业都是需要用MATLAB语言来完成的，所以决定来系统学习以下MATLAB，安排时间在10h左右。 MATLAB语言简介MATLAB是美国MathWorks公司出品的商业数学软件，用于算法开发、数据可视化、数据分析以及数值计算的高级技术计算语言和交互式环境，主要包括MATLAB和Simulink两大部分。它将数值分析、矩阵计算、科学数据可视化以及非线性动态系统的建">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-09-14T07:35:37.793Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MATLAB学习小结1">
+<meta name="twitter:description" content="在看机器学习的课程的时候发现，课程作业都是需要用MATLAB语言来完成的，所以决定来系统学习以下MATLAB，安排时间在10h左右。 MATLAB语言简介MATLAB是美国MathWorks公司出品的商业数学软件，用于算法开发、数据可视化、数据分析以及数值计算的高级技术计算语言和交互式环境，主要包括MATLAB和Simulink两大部分。它将数值分析、矩阵计算、科学数据可视化以及非线性动态系统的建">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.png">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+</head></html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about/">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-MATLAB学习小结1" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      MATLAB学习小结1
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/MATLAB学习小结1.html" class="article-date">
+	  <time datetime="2019-10-21T03:16:35.000Z" itemprop="datePublished">2019-10-21</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/机器学习/">机器学习</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在看机器学习的课程的时候发现，课程作业都是需要用MATLAB语言来完成的，所以决定来系统学习以下MATLAB，安排时间在10h左右。</p>
+<h1 id="MATLAB语言简介"><a href="#MATLAB语言简介" class="headerlink" title="MATLAB语言简介"></a>MATLAB语言简介</h1><p>MATLAB是美国MathWorks公司出品的商业数学软件，用于算法开发、数据可视化、数据分析以及数值计算的高级技术计算语言和交互式环境，主要包括MATLAB和Simulink两大部分。<br>它将数值分析、矩阵计算、科学数据可视化以及非线性动态系统的建模和仿真等诸多强大功能集成在一个易于使用的视窗环境中，为科学研究、工程设计以及必须进行有效数值计算的众多科学领域提供了一种全面的解决方案，并在很大程度上摆脱了传统非交互式程序设计语言（如C、Fortran）的编辑模式，代表了当今国际科学计算软件的先进水平。</p>
+<h1 id="MATLAB基础学习"><a href="#MATLAB基础学习" class="headerlink" title="MATLAB基础学习"></a>MATLAB基础学习</h1><h2 id="语言基础"><a href="#语言基础" class="headerlink" title="语言基础"></a>语言基础</h2><h3 id="输入命令"><a href="#输入命令" class="headerlink" title="输入命令"></a>输入命令</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://ww2.mathworks.cn/help/matlab/ref/ans.html" target="_blank" rel="noopener">ans</a></td>
+<td style="text-align:center">最近记录的为给定义的结果</td>
+<td>-</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://ww2.mathworks.cn/help/matlab/ref/clc.html" target="_blank" rel="noopener">clc</a></td>
+<td style="text-align:center">清空命令行窗口</td>
+<td>&gt;clc</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://ww2.mathworks.cn/help/matlab/ref/diary.html" target="_blank" rel="noopener">diary</a></td>
+<td style="text-align:center">窗口日志操作，开启关闭和日志命名</td>
+<td>diary off</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://ww2.mathworks.cn/help/matlab/ref/format.html" target="_blank" rel="noopener">format</a></td>
+<td style="text-align:center">格式化控制台参数格式输出</td>
+<td>format float</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://ww2.mathworks.cn/help/matlab/ref/home.html" target="_blank" rel="noopener">home</a></td>
+<td style="text-align:center">发送光标复位</td>
+<td>home</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://ww2.mathworks.cn/help/matlab/ref/iskeyword.html" target="_blank" rel="noopener">iskeyword</a></td>
+<td style="text-align:center">判断是否为程序关键字</td>
+<td>iskeyword(‘try’)</td>
+</tr>
+<tr>
+<td style="text-align:center">more</td>
+<td style="text-align:center">控制分页显示</td>
+<td>more on</td>
+</tr>
+</tbody>
+</table>
+<h2 id="矩阵和数组"><a href="#矩阵和数组" class="headerlink" title="矩阵和数组"></a>矩阵和数组</h2><p>矩阵和数组是MATLAB中信息和数据的基本表示形式。您可以创建常用的数组和网格、合并现有数组、操作数组的形状和内容，以及使用索引访问数组元素。</p>
+<h3 id="创建和合并数组"><a href="#创建和合并数组" class="headerlink" title="创建和合并数组"></a>创建和合并数组</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">方法名</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">zeros</td>
+<td style="text-align:center">构建全0矩阵</td>
+<td style="text-align:center">zeros(2,2)</td>
+</tr>
+<tr>
+<td style="text-align:center">ones</td>
+<td style="text-align:center">构全部为1的矩阵</td>
+<td style="text-align:center">ones(2,2)</td>
+</tr>
+<tr>
+<td style="text-align:center">rand</td>
+<td style="text-align:center">构建随机(0，1)范围的矩阵</td>
+<td style="text-align:center">rand(5)</td>
+</tr>
+<tr>
+<td style="text-align:center">eye</td>
+<td style="text-align:center">单位矩阵</td>
+<td style="text-align:center">eye(3)</td>
+</tr>
+<tr>
+<td style="text-align:center">diag</td>
+<td style="text-align:center">创建对角矩阵 或者元素</td>
+<td style="text-align:center">diag(3)</td>
+</tr>
+<tr>
+<td style="text-align:center">blkdiag</td>
+<td style="text-align:center">分块对角矩阵 或者元素</td>
+<td style="text-align:center">A1 = ones(2,2);<br>A2 = 2<em>ones(3,2);<br>A3 = 3</em>ones(2,3);<br>B = blkdiag(A1,A2,A3)</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://ww2.mathworks.cn/help/matlab/ref/cat.html" target="_blank" rel="noopener">cat</a></td>
+<td style="text-align:center">串联矩阵</td>
+<td style="text-align:center">A1 = ones(2,2);<br>A2 = 2<em>ones(3,2);<br>A3 = 3</em>ones(2,3);<br>B = cat(A1,A2,A3)</td>
+</tr>
+<tr>
+<td style="text-align:center">horzcat</td>
+<td style="text-align:center">横向串联</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">vertcat</td>
+<td style="text-align:center">纵向串联</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">repelem</td>
+<td style="text-align:center">重复元素副本</td>
+<td style="text-align:center">repelem(1,2,3,4)</td>
+</tr>
+<tr>
+<td style="text-align:center">repmat</td>
+<td style="text-align:center">重复元素副本</td>
+<td style="text-align:center">repmat(1,2,3,4)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="创建网格"><a href="#创建网格" class="headerlink" title="创建网格"></a>创建网格</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">方法名</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">linspace</td>
+<td style="text-align:center">生成线性间距向量<br>，默认是100</td>
+<td style="text-align:center">linspace(0,1,3)</td>
+</tr>
+<tr>
+<td style="text-align:center">logspace</td>
+<td style="text-align:center">生成对数间距向量<br></td>
+<td style="text-align:center">logspace(0,1,3)</td>
+</tr>
+<tr>
+<td style="text-align:center">freqspace</td>
+<td style="text-align:center">生成频率间距向量<br></td>
+<td style="text-align:center">freqspace(0,1,3)</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://ww2.mathworks.cn/help/matlab/ref/meshgrid.html" target="_blank" rel="noopener">meshgrid</a></td>
+<td style="text-align:center">根据向量返回一个二维和三维网格</td>
+<td style="text-align:center">[X,Y]=meshgrid(x,y)</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://ww2.mathworks.cn/help/matlab/ref/ndgrid.html" target="_blank" rel="noopener">ndgrid</a></td>
+<td style="text-align:center">N维空间矩形表格</td>
+<td style="text-align:center">[X,Y]=(1,3)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="确定大小、形状和排序"><a href="#确定大小、形状和排序" class="headerlink" title="确定大小、形状和排序"></a>确定大小、形状和排序</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">方法名</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">length</td>
+<td style="text-align:center">最大数组维度的长度</td>
+</tr>
+<tr>
+<td style="text-align:center">size</td>
+<td style="text-align:center">数组大小</td>
+</tr>
+<tr>
+<td style="text-align:center">ndims</td>
+<td style="text-align:center">数组维度数目</td>
+</tr>
+<tr>
+<td style="text-align:center">numel</td>
+<td style="text-align:center">数组元素的数目</td>
+</tr>
+<tr>
+<td style="text-align:center">isscalar</td>
+<td style="text-align:center">确定输入是否为标量</td>
+</tr>
+<tr>
+<td style="text-align:center">issorted</td>
+<td style="text-align:center">确定数组是否已排序</td>
+</tr>
+<tr>
+<td style="text-align:center">issortedrows</td>
+<td style="text-align:center">确定矩阵或表的行是否已排序</td>
+</tr>
+<tr>
+<td style="text-align:center">isvector</td>
+<td style="text-align:center">确定输入是否为向量</td>
+</tr>
+<tr>
+<td style="text-align:center">ismatrix</td>
+<td style="text-align:center">确定输入是否为矩阵</td>
+</tr>
+<tr>
+<td style="text-align:center">isrow</td>
+<td style="text-align:center">确定输入是否为行向量</td>
+</tr>
+<tr>
+<td style="text-align:center">iscolumn</td>
+<td style="text-align:center">确定输入是否为列向量</td>
+</tr>
+<tr>
+<td style="text-align:center">isempty</td>
+<td style="text-align:center">确定数组是否为空</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wtchat_pay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>LANSUS
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/MATLAB学习小结1.html" target="_blank" title="MATLAB学习小结1">http://lansus.coding.me/MATLAB学习小结1.html</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80Mzk3My8yMDUwOQ==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MATLAB/">MATLAB</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/MATLAB学习小结2.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MATLAB学习小结2-图标操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/监督学习和非监督学习.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">监督学习和非监督学习</div>
+    </a>
+  
+</nav>
+
+  
+  </article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MATLAB语言简介"><span class="nav-number">1.</span> <span class="nav-text">MATLAB语言简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MATLAB基础学习"><span class="nav-number">2.</span> <span class="nav-text">MATLAB基础学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语言基础"><span class="nav-number">2.1.</span> <span class="nav-text">语言基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入命令"><span class="nav-number">2.1.1.</span> <span class="nav-text">输入命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵和数组"><span class="nav-number">2.2.</span> <span class="nav-text">矩阵和数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和合并数组"><span class="nav-number">2.2.1.</span> <span class="nav-text">创建和合并数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建网格"><span class="nav-number">2.2.2.</span> <span class="nav-text">创建网格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确定大小、形状和排序"><span class="nav-number">2.2.3.</span> <span class="nav-text">确定大小、形状和排序</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+ 
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+		 <p id="copyRightEn">Copyright &copy; 2016 - 2020 Life-long Learning All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+		
+
+		
+  </div>
+
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about/" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1277362972&web_id=1277362972" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Life-long Learning
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 LANSUS All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

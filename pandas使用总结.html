@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>深度学习之路3:pandas使用总结 | Life-long Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="技术,人工智能,lansus">
+  
+  
+  
+  
+  <meta name="description" content="什么是PandasPandas是一个在Python中提供更好的数据结构和很多数据分析工具类的集合库，其有点包括：   一个快速、高效的DataFrame对象，用于数据操作和综合索引； 用于在内存数据结构和不同格式之间读写数据的工具：CSV和文本文件、MicrosoftExcel、SQL数据库和快速HDF 5格式；-智能数据对齐和丢失数据的综合处理：在计算中获得基于标签的自动对齐，并轻松地将凌乱的数">
+<meta name="keywords" content="python,pandas,人工智能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习之路3:Pandas使用总结">
+<meta property="og:url" content="http://lansus.coding.me/pandas使用总结.html">
+<meta property="og:site_name" content="Life-long Learning">
+<meta property="og:description" content="什么是PandasPandas是一个在Python中提供更好的数据结构和很多数据分析工具类的集合库，其有点包括：   一个快速、高效的DataFrame对象，用于数据操作和综合索引； 用于在内存数据结构和不同格式之间读写数据的工具：CSV和文本文件、MicrosoftExcel、SQL数据库和快速HDF 5格式；-智能数据对齐和丢失数据的综合处理：在计算中获得基于标签的自动对齐，并轻松地将凌乱的数">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://lansus.coding.me/image/output_8_1.png">
+<meta property="og:updated_time" content="2020-09-14T07:35:37.794Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习之路3:Pandas使用总结">
+<meta name="twitter:description" content="什么是PandasPandas是一个在Python中提供更好的数据结构和很多数据分析工具类的集合库，其有点包括：   一个快速、高效的DataFrame对象，用于数据操作和综合索引； 用于在内存数据结构和不同格式之间读写数据的工具：CSV和文本文件、MicrosoftExcel、SQL数据库和快速HDF 5格式；-智能数据对齐和丢失数据的综合处理：在计算中获得基于标签的自动对齐，并轻松地将凌乱的数">
+<meta name="twitter:image" content="http://lansus.coding.me/image/output_8_1.png">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.png">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+</head></html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about/">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-pandas使用总结" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      深度学习之路3:Pandas使用总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/pandas使用总结.html" class="article-date">
+	  <time datetime="2020-09-14T07:35:37.794Z" itemprop="datePublished">2020-09-14</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="什么是Pandas"><a href="#什么是Pandas" class="headerlink" title="什么是Pandas"></a>什么是Pandas</h1><p>Pandas是一个在Python中提供更好的数据结构和很多数据分析工具类的集合库，其有点包括：</p>
+<blockquote>
+<ul>
+<li>一个快速、高效的DataFrame对象，用于数据操作和综合索引；<ul>
+<li>用于在内存数据结构和不同格式之间读写数据的工具：CSV和文本文件、MicrosoftExcel、SQL数据库和快速HDF 5格式；<br>-智能数据对齐和丢失数据的综合处理：在计算中获得基于标签的自动对齐，并轻松地将凌乱的数据操作为有序的形式；</li>
+<li>数据集的灵活调整和旋转；</li>
+<li>基于智能标签的切片、花哨的索引和大型数据集的子集；</li>
+<li>可以从数据结构中插入和删除列，以实现大小可变；</li>
+<li>通过引擎与强大的组聚合或转换数据，允许对数据集进行拆分-应用-组合操作；</li>
+<li>数据集的高性能合并和连接；</li>
+<li>层次轴索引提供了在低维数据结构中处理高维数据的直观方法；</li>
+</ul>
+</li>
+<li>时间序列功能：<br>-日期范围生成和频率转换、移动窗口统计、移动窗口线性回归、日期转换和滞后。甚至在不丢失数据的情况下创建特定领域的时间偏移和加入时间序列；</li>
+<li>对性能进行了高度优化，用Cython或C编写了关键代码路径。</li>
+<li>Python与Pandas在广泛的学术和商业领域中使用，包括金融，神经科学，经济学，统计学，广告，网络分析，等等</li>
+</ul>
+</blockquote>
+<blockquote>
+<pre><code>-- [Pandas中文文档](https://www.pypandas.cn/intro/home.html)
+</code></pre></blockquote>
+<h1 id="Pandas-Series"><a href="#Pandas-Series" class="headerlink" title="Pandas Series"></a>Pandas Series</h1><h2 id="怎么创建"><a href="#怎么创建" class="headerlink" title="怎么创建"></a>怎么创建</h2><p>Series是Pandas中的一维数据结构，类似于Python中的列表和Numpy中的Ndarray，不同之处在于：Series是一维的，能存储不同类型的数据，有一组索引与元素对应。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib inline</span><br><span class="line">s1=pd.Series([1,3,4,5,6,np.nan,345])</span><br><span class="line">s1</span><br></pre></td></tr></table></figure>
+<p>也可以自己自定下标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s2=pd.Series([1,2,3,4,5],[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;])</span><br></pre></td></tr></table></figure>
+<p> 这样大数据结构好处是可以通过下标来选取数据：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s2[&apos;a&apos;] #等价下面</span><br><span class="line">s2.iloc[0]</span><br></pre></td></tr></table></figure></p>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><p>下面是常用的一些方法具体使用方法可以看附录里的代码输出）:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">举例</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Series(array，index=array)</td>
+<td style="text-align:center">初始化一个Panda数列</td>
+<td style="text-align:center">s1=pd.Series([1,3,4,5,6,np.nan,345])</td>
+<td style="text-align:center">可以自定义下标 index是自定义的下标集合</td>
+</tr>
+<tr>
+<td style="text-align:center">iloc[position]</td>
+<td style="text-align:center">通过位数获取值</td>
+<td style="text-align:center">s1.ilo</td>
+</tr>
+<tr>
+<td style="text-align:center">size</td>
+<td style="text-align:center">元素的个数</td>
+<td style="text-align:center">s1.size</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">head(num)</td>
+<td style="text-align:center">输出从头开始的第几个</td>
+<td style="text-align:center">s1.head(2)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">describe()</td>
+<td style="text-align:center">返回对数列的描述</td>
+<td style="text-align:center">s1.describe()</td>
+<td style="text-align:center">描述包括最大值、最小值方差、平均值等</td>
+</tr>
+<tr>
+<td style="text-align:center">sort_values(ascending,na_position)</td>
+<td style="text-align:center">排序</td>
+<td style="text-align:center">s1.sort_values(ascending=False,na_position =”first”)</td>
+<td style="text-align:center">False倒序，first 是NAN数据放最上面</td>
+</tr>
+<tr>
+<td style="text-align:center">plot</td>
+<td style="text-align:center">直出图形</td>
+<td style="text-align:center">s2.plot.bar()</td>
+<td style="text-align:center">bar  柱状图，pie 饼状图 area 折线区域图  density 曲线图</td>
+</tr>
+<tr>
+<td style="text-align:center">to_dict()</td>
+<td style="text-align:center">将数列转换成一个python的字典类型</td>
+<td style="text-align:center">sdic=s1.to_dict()</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">drop_duplicates()</td>
+<td style="text-align:center">去掉数列里重复的值</td>
+<td style="text-align:center">s1.drop_duplicates()</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Pandas-DataFrame"><a href="#Pandas-DataFrame" class="headerlink" title="Pandas DataFrame"></a>Pandas DataFrame</h1><h2 id="如何创建"><a href="#如何创建" class="headerlink" title="如何创建"></a>如何创建</h2><p>我们可以直接使用DataFrame来创建<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s3=pd.DataFrame(&#123;&quot;studens_1&quot;:[67,45,89,98,99],&quot;studens_2&quot;:[67,75,79,98,100]&#125;,index=[&quot;语文&quot;,&quot;数学&quot;,&quot;英语&quot;,&quot;体育&quot;,&quot;政治&quot;])</span><br></pre></td></tr></table></figure></p>
+<p>相比较于Series,DataFramed除了index,values,还多了一个Colums并且上面的series方法DataFram适用。</p>
+<h2 id="assign操作以及lambda"><a href="#assign操作以及lambda" class="headerlink" title="assign操作以及lambda"></a>assign操作以及lambda</h2><p>对DataFrame内的数据进行操作，可以通过assgin<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">s3.assign(studens_1= lambda x:x[&apos;studens_1&apos;]*2,studens_2=lambda x:x[&apos;studens_2&apos;]+2)</span><br></pre></td></tr></table></figure></p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line">s1=pd.Series([<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,np.nan,<span class="number">345</span>])</span><br><span class="line">s1</span><br></pre></td></tr></table></figure>
+<pre><code>0      1.0
+1      3.0
+2      4.0
+3      5.0
+4      6.0
+5      NaN
+6    345.0
+dtype: float64
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s2=pd.Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">4</span>],[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>])</span><br><span class="line">s2</span><br></pre></td></tr></table></figure>
+<pre><code>a    1
+b    2
+c    8
+d    4
+dtype: int64
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s1[<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>5.0
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s2[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>1
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s1.size</span><br></pre></td></tr></table></figure>
+<pre><code>7
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s2.head(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>a    1
+b    2
+dtype: int64
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.round(s2.describe(),<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>count    4.0
+mean     2.0
+std      1.0
+min      1.0
+25%      2.0
+50%      2.0
+75%      3.0
+max      4.0
+dtype: float64
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s1.sort_values(ascending=<span class="literal">False</span>,na_position =<span class="string">"first"</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>5      NaN
+6    345.0
+4      6.0
+3      5.0
+2      4.0
+1      3.0
+0      1.0
+dtype: float64
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s2.plot.pie()</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x26cee511f98&gt;
+</code></pre><p><img src="http://lansus.coding.me/image/output_8_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s2.to_dict()</span><br></pre></td></tr></table></figure>
+<pre><code>{&apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: 8, &apos;d&apos;: 4}
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s1.drop_duplicates()</span><br></pre></td></tr></table></figure>
+<pre><code>0      1.0
+1      3.0
+2      4.0
+3      5.0
+4      6.0
+5      NaN
+6    345.0
+dtype: float64
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s3=pd.DataFrame(&#123;<span class="string">"studens_1"</span>:[<span class="number">67</span>,<span class="number">45</span>,<span class="number">89</span>,<span class="number">98</span>,<span class="number">99</span>],<span class="string">"studens_2"</span>:[<span class="number">67</span>,<span class="number">75</span>,<span class="number">79</span>,<span class="number">98</span>,<span class="number">100</span>]&#125;,index=[<span class="string">"语文"</span>,<span class="string">"数学"</span>,<span class="string">"英语"</span>,<span class="string">"体育"</span>,<span class="string">"政治"</span>])</span><br><span class="line">s3</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>studens_1</th><br>      <th>studens_2</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>语文</th><br>      <td>67</td><br>      <td>67</td><br>    </tr><br>    <tr><br>      <th>数学</th><br>      <td>45</td><br>      <td>75</td><br>    </tr><br>    <tr><br>      <th>英语</th><br>      <td>89</td><br>      <td>79</td><br>    </tr><br>    <tr><br>      <th>体育</th><br>      <td>98</td><br>      <td>98</td><br>    </tr><br>    <tr><br>      <th>政治</th><br>      <td>99</td><br>      <td>100</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s3.iloc[<span class="number">0</span>].iloc[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>67
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s3.assign(studens_1= <span class="keyword">lambda</span> x:x[<span class="string">'studens_1'</span>]*<span class="number">2</span>,studens_2=<span class="keyword">lambda</span> x:x[<span class="string">'studens_2'</span>]+<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>studens_1</th><br>      <th>studens_2</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>语文</th><br>      <td>134</td><br>      <td>69</td><br>    </tr><br>    <tr><br>      <th>数学</th><br>      <td>90</td><br>      <td>77</td><br>    </tr><br>    <tr><br>      <th>英语</th><br>      <td>178</td><br>      <td>81</td><br>    </tr><br>    <tr><br>      <th>体育</th><br>      <td>196</td><br>      <td>100</td><br>    </tr><br>    <tr><br>      <th>政治</th><br>      <td>198</td><br>      <td>102</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data=pd.read_csv(<span class="string">"train.csv"</span>)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>PassengerId</th><br>      <th>Survived</th><br>      <th>Pclass</th><br>      <th>Name</th><br>      <th>Sex</th><br>      <th>Age</th><br>      <th>SibSp</th><br>      <th>Parch</th><br>      <th>Ticket</th><br>      <th>Fare</th><br>      <th>Cabin</th><br>      <th>Embarked</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>1</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Braund, Mr. Owen Harris</td><br>      <td>male</td><br>      <td>22.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>A/5 21171</td><br>      <td>7.2500</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>2</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Cumings, Mrs. John Bradley (Florence Briggs Th…</td><br>      <td>female</td><br>      <td>38.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>PC 17599</td><br>      <td>71.2833</td><br>      <td>C85</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>3</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Heikkinen, Miss. Laina</td><br>      <td>female</td><br>      <td>26.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>STON/O2. 3101282</td><br>      <td>7.9250</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>4</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td><br>      <td>female</td><br>      <td>35.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>113803</td><br>      <td>53.1000</td><br>      <td>C123</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>5</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Allen, Mr. William Henry</td><br>      <td>male</td><br>      <td>35.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>373450</td><br>      <td>8.0500</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>5</th><br>      <td>6</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Moran, Mr. James</td><br>      <td>male</td><br>      <td>NaN</td><br>      <td>0</td><br>      <td>0</td><br>      <td>330877</td><br>      <td>8.4583</td><br>      <td>NaN</td><br>      <td>Q</td><br>    </tr><br>    <tr><br>      <th>6</th><br>      <td>7</td><br>      <td>0</td><br>      <td>1</td><br>      <td>McCarthy, Mr. Timothy J</td><br>      <td>male</td><br>      <td>54.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>17463</td><br>      <td>51.8625</td><br>      <td>E46</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>7</th><br>      <td>8</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Palsson, Master. Gosta Leonard</td><br>      <td>male</td><br>      <td>2.0</td><br>      <td>3</td><br>      <td>1</td><br>      <td>349909</td><br>      <td>21.0750</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>8</th><br>      <td>9</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)</td><br>      <td>female</td><br>      <td>27.0</td><br>      <td>0</td><br>      <td>2</td><br>      <td>347742</td><br>      <td>11.1333</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>9</th><br>      <td>10</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Nasser, Mrs. Nicholas (Adele Achem)</td><br>      <td>female</td><br>      <td>14.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>237736</td><br>      <td>30.0708</td><br>      <td>NaN</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>10</th><br>      <td>11</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Sandstrom, Miss. Marguerite Rut</td><br>      <td>female</td><br>      <td>4.0</td><br>      <td>1</td><br>      <td>1</td><br>      <td>PP 9549</td><br>      <td>16.7000</td><br>      <td>G6</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>11</th><br>      <td>12</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Bonnell, Miss. Elizabeth</td><br>      <td>female</td><br>      <td>58.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>113783</td><br>      <td>26.5500</td><br>      <td>C103</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>12</th><br>      <td>13</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Saundercock, Mr. William Henry</td><br>      <td>male</td><br>      <td>20.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>A/5. 2151</td><br>      <td>8.0500</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>13</th><br>      <td>14</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Andersson, Mr. Anders Johan</td><br>      <td>male</td><br>      <td>39.0</td><br>      <td>1</td><br>      <td>5</td><br>      <td>347082</td><br>      <td>31.2750</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>14</th><br>      <td>15</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Vestrom, Miss. Hulda Amanda Adolfina</td><br>      <td>female</td><br>      <td>14.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>350406</td><br>      <td>7.8542</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>15</th><br>      <td>16</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Hewlett, Mrs. (Mary D Kingcome)</td><br>      <td>female</td><br>      <td>55.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>248706</td><br>      <td>16.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>16</th><br>      <td>17</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Rice, Master. Eugene</td><br>      <td>male</td><br>      <td>2.0</td><br>      <td>4</td><br>      <td>1</td><br>      <td>382652</td><br>      <td>29.1250</td><br>      <td>NaN</td><br>      <td>Q</td><br>    </tr><br>    <tr><br>      <th>17</th><br>      <td>18</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Williams, Mr. Charles Eugene</td><br>      <td>male</td><br>      <td>NaN</td><br>      <td>0</td><br>      <td>0</td><br>      <td>244373</td><br>      <td>13.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>18</th><br>      <td>19</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Vander Planke, Mrs. Julius (Emelia Maria Vande…</td><br>      <td>female</td><br>      <td>31.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>345763</td><br>      <td>18.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>19</th><br>      <td>20</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Masselmani, Mrs. Fatima</td><br>      <td>female</td><br>      <td>NaN</td><br>      <td>0</td><br>      <td>0</td><br>      <td>2649</td><br>      <td>7.2250</td><br>      <td>NaN</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>20</th><br>      <td>21</td><br>      <td>0</td><br>      <td>2</td><br>      <td>Fynney, Mr. Joseph J</td><br>      <td>male</td><br>      <td>35.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>239865</td><br>      <td>26.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>21</th><br>      <td>22</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Beesley, Mr. Lawrence</td><br>      <td>male</td><br>      <td>34.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>248698</td><br>      <td>13.0000</td><br>      <td>D56</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>22</th><br>      <td>23</td><br>      <td>1</td><br>      <td>3</td><br>      <td>McGowan, Miss. Anna “Annie”</td><br>      <td>female</td><br>      <td>15.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>330923</td><br>      <td>8.0292</td><br>      <td>NaN</td><br>      <td>Q</td><br>    </tr><br>    <tr><br>      <th>23</th><br>      <td>24</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Sloper, Mr. William Thompson</td><br>      <td>male</td><br>      <td>28.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>113788</td><br>      <td>35.5000</td><br>      <td>A6</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>24</th><br>      <td>25</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Palsson, Miss. Torborg Danira</td><br>      <td>female</td><br>      <td>8.0</td><br>      <td>3</td><br>      <td>1</td><br>      <td>349909</td><br>      <td>21.0750</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>25</th><br>      <td>26</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Asplund, Mrs. Carl Oscar (Selma Augusta Emilia…</td><br>      <td>female</td><br>      <td>38.0</td><br>      <td>1</td><br>      <td>5</td><br>      <td>347077</td><br>      <td>31.3875</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>26</th><br>      <td>27</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Emir, Mr. Farred Chehab</td><br>      <td>male</td><br>      <td>NaN</td><br>      <td>0</td><br>      <td>0</td><br>      <td>2631</td><br>      <td>7.2250</td><br>      <td>NaN</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>27</th><br>      <td>28</td><br>      <td>0</td><br>      <td>1</td><br>      <td>Fortune, Mr. Charles Alexander</td><br>      <td>male</td><br>      <td>19.0</td><br>      <td>3</td><br>      <td>2</td><br>      <td>19950</td><br>      <td>263.0000</td><br>      <td>C23 C25 C27</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>28</th><br>      <td>29</td><br>      <td>1</td><br>      <td>3</td><br>      <td>O’Dwyer, Miss. Ellen “Nellie”</td><br>      <td>female</td><br>      <td>NaN</td><br>      <td>0</td><br>      <td>0</td><br>      <td>330959</td><br>      <td>7.8792</td><br>      <td>NaN</td><br>      <td>Q</td><br>    </tr><br>    <tr><br>      <th>29</th><br>      <td>30</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Todoroff, Mr. Lalio</td><br>      <td>male</td><br>      <td>NaN</td><br>      <td>0</td><br>      <td>0</td><br>      <td>349216</td><br>      <td>7.8958</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>…</th><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>    </tr><br>    <tr><br>      <th>861</th><br>      <td>862</td><br>      <td>0</td><br>      <td>2</td><br>      <td>Giles, Mr. Frederick Edward</td><br>      <td>male</td><br>      <td>21.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>28134</td><br>      <td>11.5000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>862</th><br>      <td>863</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Swift, Mrs. Frederick Joel (Margaret Welles Ba…</td><br>      <td>female</td><br>      <td>48.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>17466</td><br>      <td>25.9292</td><br>      <td>D17</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>863</th><br>      <td>864</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Sage, Miss. Dorothy Edith “Dolly”</td><br>      <td>female</td><br>      <td>NaN</td><br>      <td>8</td><br>      <td>2</td><br>      <td>CA. 2343</td><br>      <td>69.5500</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>864</th><br>      <td>865</td><br>      <td>0</td><br>      <td>2</td><br>      <td>Gill, Mr. John William</td><br>      <td>male</td><br>      <td>24.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>233866</td><br>      <td>13.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>865</th><br>      <td>866</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Bystrom, Mrs. (Karolina)</td><br>      <td>female</td><br>      <td>42.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>236852</td><br>      <td>13.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>866</th><br>      <td>867</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Duran y More, Miss. Asuncion</td><br>      <td>female</td><br>      <td>27.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>SC/PARIS 2149</td><br>      <td>13.8583</td><br>      <td>NaN</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>867</th><br>      <td>868</td><br>      <td>0</td><br>      <td>1</td><br>      <td>Roebling, Mr. Washington Augustus II</td><br>      <td>male</td><br>      <td>31.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>PC 17590</td><br>      <td>50.4958</td><br>      <td>A24</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>868</th><br>      <td>869</td><br>      <td>0</td><br>      <td>3</td><br>      <td>van Melkebeke, Mr. Philemon</td><br>      <td>male</td><br>      <td>NaN</td><br>      <td>0</td><br>      <td>0</td><br>      <td>345777</td><br>      <td>9.5000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>869</th><br>      <td>870</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Johnson, Master. Harold Theodor</td><br>      <td>male</td><br>      <td>4.0</td><br>      <td>1</td><br>      <td>1</td><br>      <td>347742</td><br>      <td>11.1333</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>870</th><br>      <td>871</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Balkic, Mr. Cerin</td><br>      <td>male</td><br>      <td>26.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>349248</td><br>      <td>7.8958</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>871</th><br>      <td>872</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Beckwith, Mrs. Richard Leonard (Sallie Monypeny)</td><br>      <td>female</td><br>      <td>47.0</td><br>      <td>1</td><br>      <td>1</td><br>      <td>11751</td><br>      <td>52.5542</td><br>      <td>D35</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>872</th><br>      <td>873</td><br>      <td>0</td><br>      <td>1</td><br>      <td>Carlsson, Mr. Frans Olof</td><br>      <td>male</td><br>      <td>33.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>695</td><br>      <td>5.0000</td><br>      <td>B51 B53 B55</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>873</th><br>      <td>874</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Vander Cruyssen, Mr. Victor</td><br>      <td>male</td><br>      <td>47.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>345765</td><br>      <td>9.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>874</th><br>      <td>875</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Abelson, Mrs. Samuel (Hannah Wizosky)</td><br>      <td>female</td><br>      <td>28.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>P/PP 3381</td><br>      <td>24.0000</td><br>      <td>NaN</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>875</th><br>      <td>876</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Najib, Miss. Adele Kiamie “Jane”</td><br>      <td>female</td><br>      <td>15.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>2667</td><br>      <td>7.2250</td><br>      <td>NaN</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>876</th><br>      <td>877</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Gustafsson, Mr. Alfred Ossian</td><br>      <td>male</td><br>      <td>20.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>7534</td><br>      <td>9.8458</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>877</th><br>      <td>878</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Petroff, Mr. Nedelio</td><br>      <td>male</td><br>      <td>19.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>349212</td><br>      <td>7.8958</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>878</th><br>      <td>879</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Laleff, Mr. Kristo</td><br>      <td>male</td><br>      <td>NaN</td><br>      <td>0</td><br>      <td>0</td><br>      <td>349217</td><br>      <td>7.8958</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>879</th><br>      <td>880</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Potter, Mrs. Thomas Jr (Lily Alexenia Wilson)</td><br>      <td>female</td><br>      <td>56.0</td><br>      <td>0</td><br>      <td>1</td><br>      <td>11767</td><br>      <td>83.1583</td><br>      <td>C50</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>880</th><br>      <td>881</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Shelley, Mrs. William (Imanita Parrish Hall)</td><br>      <td>female</td><br>      <td>25.0</td><br>      <td>0</td><br>      <td>1</td><br>      <td>230433</td><br>      <td>26.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>881</th><br>      <td>882</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Markun, Mr. Johann</td><br>      <td>male</td><br>      <td>33.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>349257</td><br>      <td>7.8958</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>882</th><br>      <td>883</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Dahlberg, Miss. Gerda Ulrika</td><br>      <td>female</td><br>      <td>22.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>7552</td><br>      <td>10.5167</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>883</th><br>      <td>884</td><br>      <td>0</td><br>      <td>2</td><br>      <td>Banfield, Mr. Frederick James</td><br>      <td>male</td><br>      <td>28.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>C.A./SOTON 34068</td><br>      <td>10.5000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>884</th><br>      <td>885</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Sutehall, Mr. Henry Jr</td><br>      <td>male</td><br>      <td>25.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>SOTON/OQ 392076</td><br>      <td>7.0500</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>885</th><br>      <td>886</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Rice, Mrs. William (Margaret Norton)</td><br>      <td>female</td><br>      <td>39.0</td><br>      <td>0</td><br>      <td>5</td><br>      <td>382652</td><br>      <td>29.1250</td><br>      <td>NaN</td><br>      <td>Q</td><br>    </tr><br>    <tr><br>      <th>886</th><br>      <td>887</td><br>      <td>0</td><br>      <td>2</td><br>      <td>Montvila, Rev. Juozas</td><br>      <td>male</td><br>      <td>27.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>211536</td><br>      <td>13.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>887</th><br>      <td>888</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Graham, Miss. Margaret Edith</td><br>      <td>female</td><br>      <td>19.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>112053</td><br>      <td>30.0000</td><br>      <td>B42</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>888</th><br>      <td>889</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Johnston, Miss. Catherine Helen “Carrie”</td><br>      <td>female</td><br>      <td>NaN</td><br>      <td>1</td><br>      <td>2</td><br>      <td>W./C. 6607</td><br>      <td>23.4500</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>889</th><br>      <td>890</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Behr, Mr. Karl Howell</td><br>      <td>male</td><br>      <td>26.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>111369</td><br>      <td>30.0000</td><br>      <td>C148</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>890</th><br>      <td>891</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Dooley, Mr. Patrick</td><br>      <td>male</td><br>      <td>32.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>370376</td><br>      <td>7.7500</td><br>      <td>NaN</td><br>      <td>Q</td><br>    </tr><br>  </tbody><br></table><br><p>891 rows × 12 columns</p><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#整理数据，删除空数据</span></span><br><span class="line">data=data.drop(<span class="string">'Cabin'</span>,axis=<span class="number">1</span>)</span><br><span class="line">data[<span class="string">'Age'</span>]=data[<span class="string">'Age'</span>].fillna(<span class="number">20</span>)</span><br><span class="line">data[<span class="string">'Embarked'</span>]=data[<span class="string">'Embarked'</span>].notnull()</span><br><span class="line">data.isnull().sum()</span><br></pre></td></tr></table></figure>
+<pre><code>PassengerId    0
+Survived       0
+Pclass         0
+Name           0
+Sex            0
+Age            0
+SibSp          0
+Parch          0
+Ticket         0
+Fare           0
+Embarked       0
+dtype: int64
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.loc[<span class="number">2</span>:<span class="number">5</span>,[<span class="string">"Age"</span>]]</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>Age</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>2</th><br>      <td>26.0</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>35.0</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>35.0</td><br>    </tr><br>    <tr><br>      <th>5</th><br>      <td>20.0</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.loc[data[<span class="string">"Survived"</span>]==<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>  File &quot;&lt;ipython-input-108-e75dc7c72bde&gt;&quot;, line 1
+    data.?loc[data[&quot;Survived&quot;]==1]
+         ^
+SyntaxError: invalid syntax
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="string">'Survived'</span>].corr(data[<span class="string">"Pclass"</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>-0.33848103596101475
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],index=pd.date_range(<span class="string">"20190206"</span>,periods=<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>0</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>2019-02-06</th><br>      <td>1</td><br>    </tr><br>    <tr><br>      <th>2019-02-07</th><br>      <td>2</td><br>    </tr><br>    <tr><br>      <th>2019-02-08</th><br>      <td>3</td><br>    </tr><br>    <tr><br>      <th>2019-02-09</th><br>      <td>4</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wtchat_pay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>LANSUS
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/pandas使用总结.html" target="_blank" title="深度学习之路3:Pandas使用总结">http://lansus.coding.me/pandas使用总结.html</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80Mzk3My8yMDUwOQ==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pandas/">pandas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人工智能/">人工智能</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/MATLAB学习小结2.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MATLAB学习小结2-图标操作</div>
+    </a>
+  
+</nav>
+
+  
+  </article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Pandas"><span class="nav-number">1.</span> <span class="nav-text">什么是Pandas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pandas-Series"><span class="nav-number">2.</span> <span class="nav-text">Pandas Series</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么创建"><span class="nav-number">2.1.</span> <span class="nav-text">怎么创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用方法"><span class="nav-number">2.2.</span> <span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pandas-DataFrame"><span class="nav-number">3.</span> <span class="nav-text">Pandas DataFrame</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何创建"><span class="nav-number">3.1.</span> <span class="nav-text">如何创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assign操作以及lambda"><span class="nav-number">3.2.</span> <span class="nav-text">assign操作以及lambda</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-number">4.</span> <span class="nav-text">附录</span></a></li></ol>
+    
+    </div>
+  </aside>
+ 
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+		 <p id="copyRightEn">Copyright &copy; 2016 - 2020 Life-long Learning All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+		
+
+		
+  </div>
+
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about/" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1277362972&web_id=1277362972" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Life-long Learning
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 LANSUS All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
