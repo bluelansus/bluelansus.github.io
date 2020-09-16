@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>elementui 组件01 | Life-long Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="技术,人工智能,lansus">
+  
+  
+  
+  
+  <meta name="description" content="ElementUI 组件框架使用在使用elemfentUI 的时候要配合Vue或者React脚本来使用，不然无法预览效果，我这里使用的vue 框架，所以在html要实例化Vue,并且绑定到 租间房父布局，例如： 12345678910111213141516171819202122232425262728&amp;lt;html &amp;gt; &amp;lt;head&amp;gt;  &amp;lt;link rel=&amp;quot;">
+<meta name="keywords" content="ElementUI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="elementUi 组件01">
+<meta property="og:url" content="http://lansus.coding.me/elementUi-组件01.html">
+<meta property="og:site_name" content="Life-long Learning">
+<meta property="og:description" content="ElementUI 组件框架使用在使用elemfentUI 的时候要配合Vue或者React脚本来使用，不然无法预览效果，我这里使用的vue 框架，所以在html要实例化Vue,并且绑定到 租间房父布局，例如： 12345678910111213141516171819202122232425262728&amp;lt;html &amp;gt; &amp;lt;head&amp;gt;  &amp;lt;link rel=&amp;quot;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-09-16T03:25:03.064Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="elementUi 组件01">
+<meta name="twitter:description" content="ElementUI 组件框架使用在使用elemfentUI 的时候要配合Vue或者React脚本来使用，不然无法预览效果，我这里使用的vue 框架，所以在html要实例化Vue,并且绑定到 租间房父布局，例如： 12345678910111213141516171819202122232425262728&amp;lt;html &amp;gt; &amp;lt;head&amp;gt;  &amp;lt;link rel=&amp;quot;">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.png">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+</head></html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about/">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-elementUi-组件01" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      elementUi 组件01
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/elementUi-组件01.html" class="article-date">
+	  <time datetime="2020-09-14T08:23:46.000Z" itemprop="datePublished">2020-09-14</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/html5/">html5</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+	
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ElementUI-组件"><a href="#ElementUI-组件" class="headerlink" title="ElementUI 组件"></a>ElementUI 组件</h1><h2 id="框架使用"><a href="#框架使用" class="headerlink" title="框架使用"></a>框架使用</h2><p>在使用elemfentUI 的时候要配合Vue或者React脚本来使用，不然无法预览效果，我这里使用的vue 框架，所以<br>在html要实例化Vue,并且绑定到 租间房父布局，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;html &gt; </span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/element-ui/lib/theme-chalk/index.css&quot;&gt;</span><br><span class="line">  &lt;!-- import Vue before Element --&gt;</span><br><span class="line">  &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;!-- import JavaScript --&gt;</span><br><span class="line">  &lt;script src=&quot;https://unpkg.com/element-ui/lib/index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">  &lt;el-button&gt;</span><br><span class="line">  登录  </span><br><span class="line">  &lt;/el-button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">var vm=new Vue(&#123;</span><br><span class="line">el:&quot;#app&quot;,</span><br><span class="line">&#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="CSS居中"><a href="#CSS居中" class="headerlink" title="CSS居中"></a>CSS居中</h2><h3 id="div-居中"><a href="#div-居中" class="headerlink" title="div 居中"></a>div 居中</h3><p>设置div的宽高，然后设置<br><code>margin：0 auto</code> ,可以让子元素居中</p>
+<h3 id="块级元素水平居中"><a href="#块级元素水平居中" class="headerlink" title="块级元素水平居中"></a>块级元素水平居中</h3><p>设置 父布局<br><code>text-align:center</code>来设置水平居中</p>
+<h3 id="flex布局居中"><a href="#flex布局居中" class="headerlink" title="flex布局居中"></a>flex布局居中</h3><p>设置父布局为flex，布局并且设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">display:flex;</span><br><span class="line">align-items:center;</span><br></pre></td></tr></table></figure></p>
+<h2 id="layout-布局"><a href="#layout-布局" class="headerlink" title="layout 布局"></a><code>layout</code> 布局</h2><p><code>el-row</code> 标签和<code>el-col</code>来配合显示行列布局：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-row&gt;</span><br><span class="line">&lt;el-clo&gt;</span><br><span class="line">  &lt;div span=&quot;12&quot; style=&quot;background-color:red&quot;&gt;</span><br><span class="line">    &lt;div span=&quot;12&quot; style=&quot;background-color:green&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/el-clo&gt;</span><br><span class="line">&lt;/el-row&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>详细属性</strong></p>
+<p>【Row 属性】</p>
+<ul>
+<li><code>gutter</code> 可以可以设置间距 </li>
+<li><code>type</code> 设置布局，例如<code>type=&quot;flex&quot;</code>,设置成<code>flex</code>布局后，使用<code>justify= start |end|center| space-between | space-around</code> 来设置对齐<br>-<code>align</code> 布局在<code>flex</code>布局下，参数有<code>top | middle |bottom |</code></li>
+</ul>
+<p>【Col 属性】</p>
+<ul>
+<li><code>span</code> 根据占比来控制宽度</li>
+<li><code>offset</code>分栏偏移</li>
+<li><code>push</code> 向右移动格数</li>
+<li><code>pull</code>向左移动格数</li>
+</ul>
+<h2 id="Container布局容器"><a href="#Container布局容器" class="headerlink" title="Container布局容器"></a><code>Container</code>布局容器</h2><p>为了方便开发，设计出了布局容器<code>el-container</code>，作为父布局，只能包含四种子子布局：</p>
+<ul>
+<li><code>el-header</code> 标题栏</li>
+<li><code>el-aside</code>  侧边栏</li>
+<li><code>el-main</code>  内容栏</li>
+<li><code>el-footer</code> 底部栏</li>
+</ul>
+<p>【注】：<code>el-container</code>中，包含<code>el-aside</code>和<code>el-main</code>的时候，布局时从左到右，包含<code>el-header</code>和<code>el-footer</code>的时候，就会布局从上到下,<code>el-aside</code>中布局也是从上到下.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">   &lt;el-container&gt;</span><br><span class="line">    &lt;el-header style=&quot;background-color: black;&quot; &gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;/el-header&gt;</span><br><span class="line">   &lt;/el-container&gt;</span><br><span class="line">&lt;el-container&gt;</span><br><span class="line"></span><br><span class="line">&lt;el-aside style=&quot; background-color: red; height: 500px; width: 200px;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/el-aside&gt;</span><br><span class="line">&lt;el-main style=&quot; background-color: green; height: 500px; width: 200px;&quot; &gt;</span><br><span class="line"></span><br><span class="line">&lt;/el-main&gt;</span><br><span class="line">&lt;/el-container&gt;</span><br><span class="line"></span><br><span class="line">&lt;el-container&gt;</span><br><span class="line">  &lt;el-footer style=&quot;background-color: hotpink;&quot;&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/el-footer&gt;</span><br><span class="line">&lt;/el-container&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue().$mount(&apos;#app&apos;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Button按钮"><a href="#Button按钮" class="headerlink" title="Button按钮"></a>Button按钮</h2><p><code>el-button</code>  来显示 按钮<br>其中属性包括：</p>
+<ul>
+<li><code>type</code>  可以设置成<ul>
+<li><code>primary</code> 主要按钮</li>
+<li><code>success</code> 成功按钮</li>
+<li>…</li>
+</ul>
+</li>
+<li><code>round</code> 圆角按钮</li>
+<li><code>circle</code> 圆形按钮</li>
+<li><code>plain</code> 朴素按钮 （默认按钮）</li>
+<li><code>disable</code> 是否不可点击</li>
+<li><code>loading</code> 是否加载</li>
+<li>-<code>icon</code>图标名</li>
+</ul>
+<h2 id="文字链接"><a href="#文字链接" class="headerlink" title="文字链接"></a>文字链接</h2><p><code>el-link</code> 来显示文字链接。主要使用的属性有：</p>
+<ul>
+<li><code>type</code> 类似于按钮</li>
+<li><code>icon</code> 显示图标。类似于按钮</li>
+<li><code>disabled</code> 是否可点击</li>
+<li><code>underline</code> 是否显示下划线,例如显示下划线。 <code>:inderline=true</code></li>
+</ul>
+<h2 id="el-radio单选-amp-el-radio-button-单选按钮"><a href="#el-radio单选-amp-el-radio-button-单选按钮" class="headerlink" title="el-radio单选  &amp;  el-radio-button 单选按钮"></a><code>el-radio</code>单选  &amp;  <code>el-radio-button</code> 单选按钮</h2><ul>
+<li><code>disabled</code> 是否可点击</li>
+<li><code>border</code> 事都显示边框</li>
+<li><code>size</code> 大小</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wtchat_pay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>LANSUS
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/elementUi-组件01.html" target="_blank" title="elementUi 组件01">http://lansus.coding.me/elementUi-组件01.html</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80Mzk3My8yMDUwOQ==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElementUI/">ElementUI</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/purple.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+  </article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ElementUI-组件"><span class="nav-number">1.</span> <span class="nav-text">ElementUI 组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#框架使用"><span class="nav-number">1.1.</span> <span class="nav-text">框架使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS居中"><span class="nav-number">1.2.</span> <span class="nav-text">CSS居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#div-居中"><span class="nav-number">1.2.1.</span> <span class="nav-text">div 居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块级元素水平居中"><span class="nav-number">1.2.2.</span> <span class="nav-text">块级元素水平居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex布局居中"><span class="nav-number">1.2.3.</span> <span class="nav-text">flex布局居中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layout-布局"><span class="nav-number">1.3.</span> <span class="nav-text">layout 布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Container布局容器"><span class="nav-number">1.4.</span> <span class="nav-text">Container布局容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Button按钮"><span class="nav-number">1.5.</span> <span class="nav-text">Button按钮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字链接"><span class="nav-number">1.6.</span> <span class="nav-text">文字链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#el-radio单选-amp-el-radio-button-单选按钮"><span class="nav-number">1.7.</span> <span class="nav-text">el-radio单选  &amp;  el-radio-button 单选按钮</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+ 
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+		 <p id="copyRightEn">Copyright &copy; 2016 - 2020 Life-long Learning All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+		
+
+		
+  </div>
+
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about/" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1277362972&web_id=1277362972" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Life-long Learning
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 LANSUS All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
